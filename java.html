@@ -5,38 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cours Java — Les bases</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="dashboard.js" defer></script>
 </head>
-<body>
-    <header class="header">
-        <a href="index.html" class="logo">LearnCode</a>
-        <nav class="menu">
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="html.html">HTML</a></li>
-                <li><a href="css.html">CSS</a></li>
-                <li><a href="java.html" class="active">Java</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <a href="index.html" class="btn btn-primary">Accueil</a>
+<body class="layout-dash">
+    <div class="dash">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation dashboard">
+        <div class="sidebar-brand">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span>
+                    <strong>LearnCode</strong>
+                    <small>Dashboard cours</small>
+                </span>
+            </a>
+            <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
         </div>
-    </header>
 
-    <main>
-        <section class="course-hero course-hero-java">
-            <div class="container">
-                <p class="badge">Cours 3 / 3</p>
-                <h1>Les bases de Java</h1>
-                <p>
-                    Java est un langage de programmation orienté objet.
-                    Il sert pour les apps, le backend, Android et bien plus.
-                </p>
-            </div>
-        </section>
+        <nav class="sidebar-nav">
+            <p class="sidebar-label">Général</p>
+            <a href="index.html" class="sidebar-link">
+                <span class="sidebar-ico" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </span>
+                Accueil
+            </a>
 
-        <section class="section">
-            <div class="container course">
-                <article class="lesson">
+            <p class="sidebar-label">Bases</p>
+            <a href="html.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H</span>
+                HTML
+            </a>
+            <a href="css.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C</span>
+                CSS
+            </a>
+            <a href="java.html" class="sidebar-link is-active">
+                <span class="sidebar-ico sidebar-ico-java" aria-hidden="true">J</span>
+                Java
+            </a>
+
+            <p class="sidebar-label">Avancé</p>
+            <a href="html-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H+</span>
+                HTML avancé
+            </a>
+            <a href="css-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C+</span>
+                CSS avancé
+            </a>
+            <a href="js-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-js" aria-hidden="true">JS</span>
+                JS avancé
+            </a>
+            <p class="sidebar-label">Dans ce cours</p>
+            <a href="#l1" class="sidebar-link sidebar-link-sub">Qu’est-ce que Java ?</a>
+            <a href="#l2" class="sidebar-link sidebar-link-sub">Premier programme</a>
+            <a href="#l3" class="sidebar-link sidebar-link-sub">Variables et types</a>
+            <a href="#l4" class="sidebar-link sidebar-link-sub">Conditions</a>
+            <a href="#l5" class="sidebar-link sidebar-link-sub">Boucles</a>
+            <a href="#l6" class="sidebar-link sidebar-link-sub">Tableaux</a>
+            <a href="#l7" class="sidebar-link sidebar-link-sub">Méthodes</a>
+            <a href="#l8" class="sidebar-link sidebar-link-sub">Classe et objet</a>
+            <a href="#l9" class="sidebar-link sidebar-link-sub">Notions à retenir</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="index.html" class="btn btn-secondary btn-block">← Site public</a>
+        </div>
+    </aside>
+
+        <div class="dash-main">
+            <header class="dash-topbar">
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="dash-topbar-meta">
+                    <span class="dash-crumb">Cours</span>
+                    <strong>Les bases de Java</strong>
+                </div>
+                <div class="dash-topbar-actions">
+                    <a href="index.html" class="btn btn-primary">Accueil</a>
+                </div>
+            </header>
+
+            <main class="dash-content">
+                <section class="course-hero dash-hero course-hero-java">
+                    <p class="badge">Cours 3 / 3 · Bases</p>
+                    <h1>Les bases de Java</h1>
+                    <p>Java est un langage de programmation orienté objet pour les apps, le backend et Android.</p>
+                </section>
+
+                <div class="course dash-course">
+<article class="lesson" id="l1">
                     <h2>1. Qu’est-ce que Java ?</h2>
                     <p>
                         Contrairement à HTML et CSS, Java est un vrai
@@ -50,7 +116,7 @@
                     </ul>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l2">
                     <h2>2. Premier programme</h2>
                     <pre><code>public class HelloWorld {
     public static void main(String[] args) {
@@ -64,7 +130,7 @@
                     </ul>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l3">
                     <h2>3. Variables et types</h2>
                     <pre><code>int age = 20;              // nombre entier
 double prix = 19.99;       // nombre à virgule
@@ -90,7 +156,7 @@ String nom = "Alice";      // texte (objet)</code></pre>
                     </div>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l4">
                     <h2>4. Conditions (if / else)</h2>
                     <pre><code>int note = 15;
 
@@ -101,7 +167,7 @@ if (note >= 10) {
 }</code></pre>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l5">
                     <h2>5. Boucles</h2>
                     <pre><code>// Boucle for : répéter un nombre de fois
 for (int i = 1; i <= 5; i++) {
@@ -116,7 +182,7 @@ while (n < 3) {
 }</code></pre>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l6">
                     <h2>6. Tableaux</h2>
                     <pre><code>String[] langages = {"HTML", "CSS", "Java"};
 
@@ -128,7 +194,7 @@ for (String lang : langages) {
 }</code></pre>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l7">
                     <h2>7. Méthodes (fonctions)</h2>
                     <pre><code>public class Calcul {
     public static int addition(int a, int b) {
@@ -142,7 +208,7 @@ for (String lang : langages) {
 }</code></pre>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l8">
                     <h2>8. Classe et objet (intro)</h2>
                     <pre><code>public class Chien {
     String nom;
@@ -163,7 +229,7 @@ for (String lang : langages) {
                     </p>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l9">
                     <h2>9. Notions à retenir</h2>
                     <div class="table-wrap">
                         <table>
@@ -191,19 +257,20 @@ for (String lang : langages) {
 
                 <div class="course-nav">
                     <a href="css.html" class="btn btn-secondary">← Cours CSS</a>
-                    <a href="index.html" class="btn btn-primary">Retour accueil</a>
+                    <div class="course-nav-end">
+                        <a href="js-avance.html" class="btn btn-secondary">JS avancé</a>
+                        <a href="index.html" class="btn btn-primary">Retour accueil</a>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
+                </div>
 
-    <footer class="footer">
-        <p>© 2026 LearnCode — Cours Java</p>
-        <nav class="footer-links">
-            <a href="html.html">HTML</a>
-            <a href="css.html">CSS</a>
-            <a href="java.html">Java</a>
-        </nav>
-    </footer>
+                <footer class="dash-footer">
+                    <p>© 2026 LearnCode — Les bases de Java</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
 </body>
 </html>

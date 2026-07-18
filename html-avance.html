@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML avancé — LearnCode</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="dashboard.js" defer></script>
+</head>
+<body class="layout-dash">
+    <div class="dash">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation dashboard">
+        <div class="sidebar-brand">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span>
+                    <strong>LearnCode</strong>
+                    <small>Dashboard cours</small>
+                </span>
+            </a>
+            <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="sidebar-label">Général</p>
+            <a href="index.html" class="sidebar-link">
+                <span class="sidebar-ico" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </span>
+                Accueil
+            </a>
+
+            <p class="sidebar-label">Bases</p>
+            <a href="html.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H</span>
+                HTML
+            </a>
+            <a href="css.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C</span>
+                CSS
+            </a>
+            <a href="java.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-java" aria-hidden="true">J</span>
+                Java
+            </a>
+
+            <p class="sidebar-label">Avancé</p>
+            <a href="html-avance.html" class="sidebar-link is-active">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H+</span>
+                HTML avancé
+            </a>
+            <a href="css-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C+</span>
+                CSS avancé
+            </a>
+            <a href="js-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-js" aria-hidden="true">JS</span>
+                JS avancé
+            </a>
+            <p class="sidebar-label">Dans ce cours</p>
+            <a href="#web-components" class="sidebar-link sidebar-link-sub">Web Components</a>
+            <a href="#shadow-dom" class="sidebar-link sidebar-link-sub">Shadow DOM</a>
+            <a href="#custom-elements" class="sidebar-link sidebar-link-sub">Custom Elements</a>
+            <a href="#templates" class="sidebar-link sidebar-link-sub">Templates</a>
+            <a href="#slots" class="sidebar-link sidebar-link-sub">Slots</a>
+            <a href="#aria" class="sidebar-link sidebar-link-sub">ARIA</a>
+            <a href="#microdata" class="sidebar-link sidebar-link-sub">Microdata</a>
+            <a href="#lazy-loading" class="sidebar-link sidebar-link-sub">Lazy Loading</a>
+            <a href="#pwa" class="sidebar-link sidebar-link-sub">PWA</a>
+            <a href="#api-html5" class="sidebar-link sidebar-link-sub">API HTML5</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="index.html" class="btn btn-secondary btn-block">← Site public</a>
+        </div>
+    </aside>
+
+        <div class="dash-main">
+            <header class="dash-topbar">
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="dash-topbar-meta">
+                    <span class="dash-crumb">Cours</span>
+                    <strong>HTML avancé</strong>
+                </div>
+                <div class="dash-topbar-actions">
+                    <a href="css-avance.html" class="btn btn-primary">Suivant : CSS →</a>
+                </div>
+            </header>
+
+            <main class="dash-content">
+                <section class="course-hero dash-hero">
+                    <p class="badge">Avancé · HTML · 10 sujets</p>
+                    <h1>HTML avancé</h1>
+                    <p>Web Components, accessibilité, données structurées, lazy loading, PWA et APIs HTML5.</p>
+                </section>
+
+                <div class="course dash-course">
+<article class="lesson" id="web-components">
+                    <h2>1. Web Components</h2>
+                    <p>
+                        Les <strong>Web Components</strong> regroupent Custom Elements,
+                        Shadow DOM et Templates pour créer des composants HTML réutilisables,
+                        sans framework.
+                    </p>
+                    <ul class="checklist">
+                        <li><code>customElements.define()</code> — enregistre une balise</li>
+                        <li><code>attachShadow()</code> — isole le style et le DOM</li>
+                        <li><code>&lt;template&gt;</code> — modèle HTML clonable</li>
+                        <li><code>&lt;slot&gt;</code> — injection de contenu externe</li>
+                    </ul>
+                    <pre><code>&lt;!-- Utilisation d'un composant --&gt;
+&lt;user-card name="Alice" role="Dev"&gt;&lt;/user-card&gt;</code></pre>
+                </article>
+
+                <article class="lesson" id="shadow-dom">
+                    <h2>2. Shadow DOM</h2>
+                    <p>
+                        Le Shadow DOM <strong>isole</strong> le HTML et le CSS d’un composant
+                        pour éviter les fuites de styles vers (et depuis) le reste de la page.
+                    </p>
+                    <pre><code>class InfoBox extends HTMLElement {
+  constructor() {
+    super();
+    const root = this.attachShadow({ mode: "open" });
+    root.innerHTML = `
+      &lt;style&gt;
+        .box {
+          padding: 12px 16px;
+          border-radius: 10px;
+          background: #eef2ff;
+          color: #3730a3;
+          font: 500 0.95rem system-ui, sans-serif;
+        }
+      &lt;/style&gt;
+      &lt;div class="box"&gt;Style encapsulé (Shadow DOM)&lt;/div&gt;
+    `;
+  }
+}
+customElements.define("info-box", InfoBox);</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo</h3>
+                        <info-box></info-box>
+                    </div>
+                </article>
+
+                <article class="lesson" id="custom-elements">
+                    <h2>3. Custom Elements</h2>
+                    <p>
+                        Les Custom Elements permettent de créer ses propres balises HTML
+                        (ex. <code>&lt;my-card&gt;</code>). Le nom doit contenir un tiret.
+                    </p>
+                    <pre><code>class MyCard extends HTMLElement {
+  connectedCallback() {
+    const title = this.getAttribute("title") || "Carte";
+    this.innerHTML = `
+      &lt;article class="card-like"&gt;
+        &lt;strong&gt;${title}&lt;/strong&gt;
+        &lt;p&gt;Composant autonome&lt;/p&gt;
+      &lt;/article&gt;
+    `;
+  }
+}
+customElements.define("my-card", MyCard);</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo</h3>
+                        <div class="demo-row">
+                            <my-card title="HTML"></my-card>
+                            <my-card title="CSS"></my-card>
+                            <my-card title="JS"></my-card>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="templates">
+                    <h2>4. Templates (<code>&lt;template&gt;</code>)</h2>
+                    <p>
+                        Un <code>&lt;template&gt;</code> contient du HTML <strong>non rendu</strong>
+                        jusqu’à ce qu’on le clone dynamiquement avec JavaScript.
+                    </p>
+                    <pre><code>&lt;template id="item-tpl"&gt;
+  &lt;li class="tpl-item"&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  const tpl = document.getElementById("item-tpl");
+  const clone = tpl.content.cloneNode(true);
+  clone.querySelector("span").textContent = "Nouvel item";
+  list.appendChild(clone);
+&lt;/script&gt;</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — cloner un template</h3>
+                        <template id="item-tpl">
+                            <li class="tpl-item"><span></span></li>
+                        </template>
+                        <ul id="tpl-list" class="checklist"></ul>
+                        <button type="button" class="btn btn-primary" id="btn-tpl">Ajouter un item</button>
+                    </div>
+                </article>
+
+                <article class="lesson" id="slots">
+                    <h2>5. Slots</h2>
+                    <p>
+                        Les <code>&lt;slot&gt;</code> injectent du contenu fourni par l’utilisateur
+                        dans le Shadow DOM d’un Web Component.
+                    </p>
+                    <pre><code>&lt;!-- Dans le Shadow DOM --&gt;
+&lt;h3&gt;&lt;slot name="title"&gt;Titre par défaut&lt;/slot&gt;&lt;/h3&gt;
+&lt;div&gt;&lt;slot&gt;Contenu par défaut&lt;/slot&gt;&lt;/div&gt;
+
+&lt;!-- Utilisation --&gt;
+&lt;slot-card&gt;
+  &lt;span slot="title"&gt;Mon titre&lt;/span&gt;
+  &lt;p&gt;Contenu projeté dans le slot&lt;/p&gt;
+&lt;/slot-card&gt;</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo</h3>
+                        <slot-card>
+                            <span slot="title">Slot nommé</span>
+                            <p style="margin:0;color:#64748b;font-size:0.9rem">
+                                Ce paragraphe est injecté via le slot par défaut.
+                            </p>
+                        </slot-card>
+                    </div>
+                </article>
+
+                <article class="lesson" id="aria">
+                    <h2>6. ARIA</h2>
+                    <p>
+                        Les attributs <strong>ARIA</strong> (Accessible Rich Internet Applications)
+                        améliorent l’accessibilité quand le HTML sémantique ne suffit pas.
+                    </p>
+                    <ul class="checklist">
+                        <li><code>role</code> — rôle de l’élément pour les lecteurs d’écran</li>
+                        <li><code>aria-label</code> — nom accessible</li>
+                        <li><code>aria-expanded</code> — état ouvert / fermé</li>
+                        <li><code>aria-live</code> — annonce des mises à jour dynamiques</li>
+                    </ul>
+                    <pre><code>&lt;button
+  aria-expanded="false"
+  aria-controls="panel"
+  id="toggle"&gt;
+  Afficher les détails
+&lt;/button&gt;
+&lt;div id="panel" hidden&gt;Contenu caché…&lt;/div&gt;</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — panneau accessible</h3>
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="aria-toggle"
+                            aria-expanded="false"
+                            aria-controls="aria-panel"
+                        >
+                            Afficher les détails
+                        </button>
+                        <div id="aria-panel" class="note" hidden style="margin-top:12px">
+                            Ce panneau est annoncé correctement grâce à
+                            <code>aria-expanded</code> et <code>aria-controls</code>.
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="microdata">
+                    <h2>7. Microdata / Schema.org</h2>
+                    <p>
+                        Les microdonnées ajoutent des <strong>données structurées</strong>
+                        pour le référencement (Google, etc.).
+                    </p>
+                    <pre><code>&lt;article itemscope itemtype="https://schema.org/Course"&gt;
+  &lt;h3 itemprop="name"&gt;HTML avancé&lt;/h3&gt;
+  &lt;p itemprop="description"&gt;Web Components, ARIA, PWA…&lt;/p&gt;
+  &lt;meta itemprop="provider" content="LearnCode"&gt;
+&lt;/article&gt;</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Exemple structuré</h3>
+                        <article itemscope itemtype="https://schema.org/Course" class="schema-card">
+                            <h3 itemprop="name" style="margin:0 0 6px;font-size:1.05rem">HTML avancé</h3>
+                            <p itemprop="description" style="margin:0;color:#64748b;font-size:0.9rem">
+                                Web Components, ARIA, PWA et APIs HTML5.
+                            </p>
+                            <meta itemprop="provider" content="LearnCode">
+                        </article>
+                    </div>
+                </article>
+
+                <article class="lesson" id="lazy-loading">
+                    <h2>8. Lazy Loading</h2>
+                    <p>
+                        Le chargement différé des images et iframes améliore les performances
+                        initiales de la page.
+                    </p>
+                    <pre><code>&lt;img
+  src="photo.jpg"
+  alt="Paysage"
+  loading="lazy"
+  width="800"
+  height="450"
+&gt;
+
+&lt;iframe
+  src="https://exemple.com"
+  loading="lazy"
+  title="Carte"
+&gt;&lt;/iframe&gt;</code></pre>
+                    <ul class="checklist">
+                        <li><code>loading="lazy"</code> — charge hors écran plus tard</li>
+                        <li>Indique toujours <code>width</code> / <code>height</code> pour éviter le layout shift</li>
+                        <li>Utile pour les galeries et le bas de page</li>
+                    </ul>
+                </article>
+
+                <article class="lesson" id="pwa">
+                    <h2>9. Progressive Web Apps</h2>
+                    <p>
+                        Une PWA s’appuie sur du HTML, un <strong>manifest</strong> et un
+                        <strong>Service Worker</strong> pour être installable et (partiellement) hors-ligne.
+                    </p>
+                    <pre><code>&lt;!-- index.html --&gt;
+&lt;link rel="manifest" href="/manifest.webmanifest"&gt;
+
+// manifest.webmanifest
+{
+  "name": "LearnCode",
+  "short_name": "Learn",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#4f46e5",
+  "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+}
+
+// Enregistrement du service worker
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js");
+}</code></pre>
+                </article>
+
+                <article class="lesson" id="api-html5">
+                    <h2>10. API HTML5</h2>
+                    <p>
+                        Le navigateur expose de nombreuses APIs liées au HTML :
+                        Canvas, Drag &amp; Drop, Geolocation, Web Storage, History…
+                    </p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>API</th>
+                                    <th>Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>Canvas</code></td><td>Dessin 2D / jeux</td></tr>
+                                <tr><td><code>Drag &amp; Drop</code></td><td>Glisser-déposer d’éléments</td></tr>
+                                <tr><td><code>Geolocation</code></td><td>Position de l’utilisateur</td></tr>
+                                <tr><td><code>localStorage</code></td><td>Stockage clé/valeur persistant</td></tr>
+                                <tr><td><code>History API</code></td><td>Navigation sans recharger la page</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pre><code>// Web Storage
+localStorage.setItem("theme", "dark");
+const theme = localStorage.getItem("theme");
+
+// History
+history.pushState({ page: 2 }, "", "?page=2");</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — localStorage</h3>
+                        <div class="demo-row">
+                            <input type="text" id="storage-input" class="demo-input" placeholder="Ton prénom" aria-label="Prénom">
+                            <button type="button" class="btn btn-primary" id="storage-save">Sauver</button>
+                            <button type="button" class="btn btn-secondary" id="storage-clear">Effacer</button>
+                        </div>
+                        <p id="storage-out" class="demo-out" aria-live="polite"></p>
+                    </div>
+                </article>
+
+                <div class="course-nav">
+                    <a href="html.html" class="btn btn-secondary">← HTML bases</a>
+                    <a href="css-avance.html" class="btn btn-primary">CSS avancé →</a>
+                </div>
+                </div>
+
+                <footer class="dash-footer">
+                    <p>© 2026 LearnCode — HTML avancé</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+<script>
+        /* Shadow DOM demo */
+        class InfoBox extends HTMLElement {
+            constructor() {
+                super();
+                const root = this.attachShadow({ mode: "open" });
+                root.innerHTML = `
+                    <style>
+                        .box {
+                            padding: 12px 16px;
+                            border-radius: 10px;
+                            background: #eef2ff;
+                            color: #3730a3;
+                            font: 500 0.95rem system-ui, sans-serif;
+                        }
+                    </style>
+                    <div class="box">Style encapsulé (Shadow DOM)</div>
+                `;
+            }
+        }
+        customElements.define("info-box", InfoBox);
+
+        /* Custom element demo */
+        class MyCard extends HTMLElement {
+            connectedCallback() {
+                const title = this.getAttribute("title") || "Carte";
+                this.innerHTML = `
+                    <div class="adv-mini-card">
+                        <strong>${title}</strong>
+                        <span>Composant autonome</span>
+                    </div>
+                `;
+            }
+        }
+        customElements.define("my-card", MyCard);
+
+        /* Slot card demo */
+        class SlotCard extends HTMLElement {
+            constructor() {
+                super();
+                const root = this.attachShadow({ mode: "open" });
+                root.innerHTML = `
+                    <style>
+                        :host { display: block; }
+                        .wrap {
+                            padding: 16px;
+                            border-radius: 12px;
+                            border: 1px solid #e2e8f0;
+                            background: #f8fafc;
+                        }
+                        h3 {
+                            margin: 0 0 8px;
+                            font: 700 1rem system-ui, sans-serif;
+                            color: #0f172a;
+                        }
+                    </style>
+                    <div class="wrap">
+                        <h3><slot name="title">Titre par défaut</slot></h3>
+                        <slot>Contenu par défaut</slot>
+                    </div>
+                `;
+            }
+        }
+        customElements.define("slot-card", SlotCard);
+
+        /* Template clone */
+        const tpl = document.getElementById("item-tpl");
+        const list = document.getElementById("tpl-list");
+        let n = 0;
+        document.getElementById("btn-tpl").addEventListener("click", () => {
+            n += 1;
+            const clone = tpl.content.cloneNode(true);
+            clone.querySelector("span").textContent = "Item cloné #" + n;
+            list.appendChild(clone);
+        });
+
+        /* ARIA panel */
+        const ariaBtn = document.getElementById("aria-toggle");
+        const ariaPanel = document.getElementById("aria-panel");
+        ariaBtn.addEventListener("click", () => {
+            const open = ariaBtn.getAttribute("aria-expanded") === "true";
+            ariaBtn.setAttribute("aria-expanded", String(!open));
+            ariaPanel.hidden = open;
+            ariaBtn.textContent = open ? "Afficher les détails" : "Masquer les détails";
+        });
+
+        /* localStorage */
+        const input = document.getElementById("storage-input");
+        const out = document.getElementById("storage-out");
+        function refreshStorage() {
+            const v = localStorage.getItem("learncode-name");
+            out.textContent = v
+                ? "Valeur en localStorage : " + v
+                : "Aucune valeur enregistrée.";
+            if (v) input.value = v;
+        }
+        document.getElementById("storage-save").addEventListener("click", () => {
+            localStorage.setItem("learncode-name", input.value.trim() || "Anonyme");
+            refreshStorage();
+        });
+        document.getElementById("storage-clear").addEventListener("click", () => {
+            localStorage.removeItem("learncode-name");
+            input.value = "";
+            refreshStorage();
+        });
+        refreshStorage();
+    </script>
+</body>
+</html>

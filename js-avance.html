@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript avancé — LearnCode</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="dashboard.js" defer></script>
+</head>
+<body class="layout-dash">
+    <div class="dash">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation dashboard">
+        <div class="sidebar-brand">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span>
+                    <strong>LearnCode</strong>
+                    <small>Dashboard cours</small>
+                </span>
+            </a>
+            <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="sidebar-label">Général</p>
+            <a href="index.html" class="sidebar-link">
+                <span class="sidebar-ico" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </span>
+                Accueil
+            </a>
+
+            <p class="sidebar-label">Bases</p>
+            <a href="html.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H</span>
+                HTML
+            </a>
+            <a href="css.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C</span>
+                CSS
+            </a>
+            <a href="java.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-java" aria-hidden="true">J</span>
+                Java
+            </a>
+
+            <p class="sidebar-label">Avancé</p>
+            <a href="html-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H+</span>
+                HTML avancé
+            </a>
+            <a href="css-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C+</span>
+                CSS avancé
+            </a>
+            <a href="js-avance.html" class="sidebar-link is-active">
+                <span class="sidebar-ico sidebar-ico-js" aria-hidden="true">JS</span>
+                JS avancé
+            </a>
+            <p class="sidebar-label">Dans ce cours</p>
+            <a href="#closures" class="sidebar-link sidebar-link-sub">Closures</a>
+            <a href="#prototype" class="sidebar-link sidebar-link-sub">Prototype</a>
+            <a href="#event-loop" class="sidebar-link sidebar-link-sub">Event Loop</a>
+            <a href="#promises" class="sidebar-link sidebar-link-sub">Promises</a>
+            <a href="#async" class="sidebar-link sidebar-link-sub">Async / Await</a>
+            <a href="#modules" class="sidebar-link sidebar-link-sub">Modules ES6</a>
+            <a href="#proxy" class="sidebar-link sidebar-link-sub">Proxy</a>
+            <a href="#generators" class="sidebar-link sidebar-link-sub">Generators</a>
+            <a href="#patterns" class="sidebar-link sidebar-link-sub">Design Patterns</a>
+            <a href="#webapis" class="sidebar-link sidebar-link-sub">Web APIs</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="index.html" class="btn btn-secondary btn-block">← Site public</a>
+        </div>
+    </aside>
+
+        <div class="dash-main">
+            <header class="dash-topbar">
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="dash-topbar-meta">
+                    <span class="dash-crumb">Cours</span>
+                    <strong>JavaScript avancé</strong>
+                </div>
+                <div class="dash-topbar-actions">
+                    <a href="index.html" class="btn btn-primary">Accueil</a>
+                </div>
+            </header>
+
+            <main class="dash-content">
+                <section class="course-hero dash-hero course-hero-js">
+                    <p class="badge">Avancé · JavaScript · 10 sujets</p>
+                    <h1>JavaScript avancé</h1>
+                    <p>Closures, prototypes, event loop, Promises, async/await, modules, Proxy et Web APIs.</p>
+                </section>
+
+                <div class="course dash-course">
+<article class="lesson" id="closures">
+                    <h2>1. Closures</h2>
+                    <p>
+                        Une <strong>closure</strong> est une fonction qui conserve l’accès
+                        à son contexte lexical (variables externes) même après que la
+                        fonction parente a terminé.
+                    </p>
+                    <pre><code>function createCounter() {
+  let count = 0; // privé
+  return function () {
+    count += 1;
+    return count;
+  };
+}
+const next = createCounter();
+next(); // 1
+next(); // 2</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — compteur privé</h3>
+                        <div class="demo-row">
+                            <button type="button" class="btn btn-primary" id="closure-btn">Incrémenter</button>
+                            <span id="closure-out" class="demo-out">0</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="prototype">
+                    <h2>2. Prototype et héritage</h2>
+                    <p>
+                        Chaque objet JS a un lien interne vers un prototype.
+                        Les propriétés manquantes sont cherchées dans la chaîne de prototypes.
+                    </p>
+                    <pre><code>function Animal(name) {
+  this.name = name;
+}
+Animal.prototype.speak = function () {
+  return this.name + " fait un bruit";
+};
+
+class Dog extends Animal {
+  speak() {
+    return this.name + " aboie";
+  }
+}
+const d = new Dog("Rex");
+d.speak(); // "Rex aboie"</code></pre>
+                    <ul class="checklist">
+                        <li><code>Object.getPrototypeOf(obj)</code> — prototype d’un objet</li>
+                        <li>Les <code>class</code> ES6 sont du sucre syntaxique sur les prototypes</li>
+                    </ul>
+                </article>
+
+                <article class="lesson" id="event-loop">
+                    <h2>3. Event Loop</h2>
+                    <p>
+                        L’event loop gère l’asynchrone : call stack, microtasks (Promises)
+                        et macrotasks (<code>setTimeout</code>, I/O…).
+                    </p>
+                    <pre><code>console.log("A");
+setTimeout(() => console.log("B"), 0);      // macrotask
+Promise.resolve().then(() => console.log("C")); // microtask
+console.log("D");
+// Ordre : A, D, C, B</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — ordre d’exécution</h3>
+                        <button type="button" class="btn btn-primary" id="loop-btn">Lancer</button>
+                        <pre id="loop-out" class="demo-console" aria-live="polite"></pre>
+                    </div>
+                </article>
+
+                <article class="lesson" id="promises">
+                    <h2>4. Promises</h2>
+                    <p>
+                        Une Promise représente une valeur future. Elle est
+                        <code>pending</code>, puis <code>fulfilled</code> ou <code>rejected</code>.
+                    </p>
+                    <pre><code>function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+wait(500)
+  .then(() => "OK")
+  .then((msg) => console.log(msg))
+  .catch((err) => console.error(err));</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — Promise</h3>
+                        <button type="button" class="btn btn-primary" id="promise-btn">Attendre 800 ms</button>
+                        <p id="promise-out" class="demo-out" aria-live="polite">En attente…</p>
+                    </div>
+                </article>
+
+                <article class="lesson" id="async">
+                    <h2>5. Async / Await</h2>
+                    <p>
+                        <code>async/await</code> est une syntaxe moderne basée sur les Promises,
+                        plus lisible que les chaînes de <code>.then()</code>.
+                    </p>
+                    <pre><code>async function loadUser(id) {
+  try {
+    const res = await fetch("/api/users/" + id);
+    if (!res.ok) throw new Error("Erreur réseau");
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+  }
+}</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — async simulation</h3>
+                        <button type="button" class="btn btn-primary" id="async-btn">Charger un “user”</button>
+                        <p id="async-out" class="demo-out" aria-live="polite"></p>
+                    </div>
+                </article>
+
+                <article class="lesson" id="modules">
+                    <h2>6. Modules ES6</h2>
+                    <p>
+                        Les modules organisent le code avec <code>import</code> / <code>export</code>
+                        et ont leur propre portée.
+                    </p>
+                    <pre><code>// math.js
+export function add(a, b) { return a + b; }
+export const PI = 3.14;
+export default class Calculator { /* … */ }
+
+// main.js
+import Calculator, { add, PI } from "./math.js";
+import * as math from "./math.js";</code></pre>
+                    <ul class="checklist">
+                        <li>Dans le HTML : <code>&lt;script type="module" src="main.js"&gt;</code></li>
+                        <li>Les modules sont différés par défaut (comme <code>defer</code>)</li>
+                    </ul>
+                </article>
+
+                <article class="lesson" id="proxy">
+                    <h2>7. Proxy</h2>
+                    <p>
+                        Un <code>Proxy</code> intercepte les opérations sur un objet
+                        (lecture, écriture, keys…) via des traps.
+                    </p>
+                    <pre><code>const user = { name: "Alice" };
+const proxied = new Proxy(user, {
+  get(target, prop) {
+    console.log("lecture", prop);
+    return target[prop];
+  },
+  set(target, prop, value) {
+    if (prop === "age" && value &lt; 0) throw new Error("Âge invalide");
+    target[prop] = value;
+    return true;
+  }
+});
+proxied.name; // log "lecture name"</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — Proxy validateur</h3>
+                        <div class="demo-row">
+                            <input type="number" id="proxy-age" class="demo-input" placeholder="Âge" aria-label="Âge">
+                            <button type="button" class="btn btn-primary" id="proxy-btn">Valider</button>
+                        </div>
+                        <p id="proxy-out" class="demo-out" aria-live="polite"></p>
+                    </div>
+                </article>
+
+                <article class="lesson" id="generators">
+                    <h2>8. Generators</h2>
+                    <p>
+                        Les generators (<code>function*</code>) peuvent être mis en pause
+                        avec <code>yield</code> puis repris.
+                    </p>
+                    <pre><code>function* ids() {
+  let i = 1;
+  while (true) {
+    yield i++;
+  }
+}
+const gen = ids();
+gen.next().value; // 1
+gen.next().value; // 2</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — générateur d’IDs</h3>
+                        <button type="button" class="btn btn-primary" id="gen-btn">next()</button>
+                        <p id="gen-out" class="demo-out">—</p>
+                    </div>
+                </article>
+
+                <article class="lesson" id="patterns">
+                    <h2>9. Design Patterns</h2>
+                    <p>
+                        Des structures de code éprouvées pour organiser la complexité :
+                        Module, Observer, Singleton, Factory, MVC…
+                    </p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pattern</th>
+                                    <th>Idée</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Module</td><td>Encapsuler état + API publique</td></tr>
+                                <tr><td>Observer</td><td>Notifier des abonnés d’un événement</td></tr>
+                                <tr><td>Singleton</td><td>Une seule instance partagée</td></tr>
+                                <tr><td>Factory</td><td>Créer des objets sans <code>new</code> direct</td></tr>
+                                <tr><td>MVC</td><td>Séparer modèle / vue / contrôleur</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pre><code>// Observer simple
+const bus = {
+  events: {},
+  on(e, fn) { (this.events[e] ||= []).push(fn); },
+  emit(e, data) { (this.events[e] || []).forEach((fn) => fn(data)); }
+};
+bus.on("login", (user) => console.log(user));
+bus.emit("login", { name: "Alice" });</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — Observer</h3>
+                        <div class="demo-row">
+                            <button type="button" class="btn btn-primary" id="obs-emit">Émettre “ping”</button>
+                            <span id="obs-out" class="demo-out">0 événement(s)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="webapis">
+                    <h2>10. Web APIs</h2>
+                    <p>
+                        Au-delà du langage, le navigateur offre Fetch, WebSocket,
+                        IndexedDB, Service Workers, Web Workers…
+                    </p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>API</th>
+                                    <th>Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>fetch</code></td><td>Requêtes HTTP</td></tr>
+                                <tr><td><code>WebSocket</code></td><td>Temps réel bidirectionnel</td></tr>
+                                <tr><td><code>IndexedDB</code></td><td>Base de données locale</td></tr>
+                                <tr><td><code>Service Worker</code></td><td>Cache / mode hors-ligne (PWA)</td></tr>
+                                <tr><td><code>Web Worker</code></td><td>Calculs en arrière-plan</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pre><code>const res = await fetch("https://api.exemple.com/data");
+const data = await res.json();
+
+// Worker
+const worker = new Worker("worker.js");
+worker.postMessage({ n: 40 });
+worker.onmessage = (e) => console.log(e.data);</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — fetch (API publique)</h3>
+                        <button type="button" class="btn btn-primary" id="fetch-btn">Charger une citation</button>
+                        <p id="fetch-out" class="demo-out" aria-live="polite"></p>
+                    </div>
+                </article>
+
+                <div class="course-nav">
+                    <a href="css-avance.html" class="btn btn-secondary">← CSS avancé</a>
+                    <a href="index.html" class="btn btn-primary">Retour accueil</a>
+                </div>
+                </div>
+
+                <footer class="dash-footer">
+                    <p>© 2026 LearnCode — JavaScript avancé</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+<script>
+        /* 1. Closure */
+        function createCounter() {
+            let count = 0;
+            return function () {
+                count += 1;
+                return count;
+            };
+        }
+        const next = createCounter();
+        document.getElementById("closure-btn").addEventListener("click", () => {
+            document.getElementById("closure-out").textContent = String(next());
+        });
+
+        /* 3. Event loop */
+        document.getElementById("loop-btn").addEventListener("click", () => {
+            const lines = [];
+            const log = (msg) => lines.push(msg);
+            log("A (sync)");
+            setTimeout(() => {
+                log("B (macrotask setTimeout)");
+                document.getElementById("loop-out").textContent = lines.join("\n");
+            }, 0);
+            Promise.resolve().then(() => {
+                log("C (microtask Promise)");
+                document.getElementById("loop-out").textContent = lines.join("\n");
+            });
+            log("D (sync)");
+            document.getElementById("loop-out").textContent = lines.join("\n");
+        });
+
+        /* 4. Promise */
+        function wait(ms) {
+            return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+        document.getElementById("promise-btn").addEventListener("click", () => {
+            const out = document.getElementById("promise-out");
+            out.textContent = "pending…";
+            wait(800)
+                .then(() => {
+                    out.textContent = "fulfilled ✓ après 800 ms";
+                })
+                .catch(() => {
+                    out.textContent = "rejected";
+                });
+        });
+
+        /* 5. Async/await simulation */
+        async function fakeUser() {
+            await wait(600);
+            return { id: 1, name: "Alice", role: "dev" };
+        }
+        document.getElementById("async-btn").addEventListener("click", async () => {
+            const out = document.getElementById("async-out");
+            out.textContent = "chargement…";
+            try {
+                const user = await fakeUser();
+                out.textContent = JSON.stringify(user, null, 0);
+            } catch (err) {
+                out.textContent = String(err);
+            }
+        });
+
+        /* 7. Proxy */
+        const person = { age: 0 };
+        const proxied = new Proxy(person, {
+            set(target, prop, value) {
+                if (prop === "age" && Number(value) < 0) {
+                    throw new Error("Âge invalide (négatif)");
+                }
+                target[prop] = Number(value);
+                return true;
+            }
+        });
+        document.getElementById("proxy-btn").addEventListener("click", () => {
+            const out = document.getElementById("proxy-out");
+            const val = document.getElementById("proxy-age").value;
+            try {
+                proxied.age = val === "" ? 0 : val;
+                out.textContent = "OK — age = " + proxied.age;
+            } catch (err) {
+                out.textContent = err.message;
+            }
+        });
+
+        /* 8. Generator */
+        function* ids() {
+            let i = 1;
+            while (true) yield i++;
+        }
+        const gen = ids();
+        document.getElementById("gen-btn").addEventListener("click", () => {
+            document.getElementById("gen-out").textContent =
+                "value: " + gen.next().value;
+        });
+
+        /* 9. Observer */
+        const bus = {
+            events: {},
+            on(e, fn) {
+                (this.events[e] ||= []).push(fn);
+            },
+            emit(e, data) {
+                (this.events[e] || []).forEach((fn) => fn(data));
+            }
+        };
+        let obsCount = 0;
+        bus.on("ping", () => {
+            obsCount += 1;
+            document.getElementById("obs-out").textContent =
+                obsCount + " événement(s)";
+        });
+        document.getElementById("obs-emit").addEventListener("click", () => {
+            bus.emit("ping");
+        });
+
+        /* 10. Fetch */
+        document.getElementById("fetch-btn").addEventListener("click", async () => {
+            const out = document.getElementById("fetch-out");
+            out.textContent = "chargement…";
+            try {
+                const res = await fetch("https://api.quotable.io/random");
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                const data = await res.json();
+                out.textContent = "« " + data.content + " » — " + data.author;
+            } catch (err) {
+                out.textContent =
+                    "Échec du fetch (réseau / CORS). Erreur : " + err.message;
+            }
+        });
+    </script>
+</body>
+</html>

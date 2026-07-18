@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS avancé — LearnCode</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="dashboard.js" defer></script>
+</head>
+<body class="layout-dash">
+    <div class="dash">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation dashboard">
+        <div class="sidebar-brand">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span>
+                    <strong>LearnCode</strong>
+                    <small>Dashboard cours</small>
+                </span>
+            </a>
+            <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="sidebar-label">Général</p>
+            <a href="index.html" class="sidebar-link">
+                <span class="sidebar-ico" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </span>
+                Accueil
+            </a>
+
+            <p class="sidebar-label">Bases</p>
+            <a href="html.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H</span>
+                HTML
+            </a>
+            <a href="css.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C</span>
+                CSS
+            </a>
+            <a href="java.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-java" aria-hidden="true">J</span>
+                Java
+            </a>
+
+            <p class="sidebar-label">Avancé</p>
+            <a href="html-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H+</span>
+                HTML avancé
+            </a>
+            <a href="css-avance.html" class="sidebar-link is-active">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C+</span>
+                CSS avancé
+            </a>
+            <a href="js-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-js" aria-hidden="true">JS</span>
+                JS avancé
+            </a>
+            <p class="sidebar-label">Dans ce cours</p>
+            <a href="#grid" class="sidebar-link sidebar-link-sub">CSS Grid avancé</a>
+            <a href="#flexbox" class="sidebar-link sidebar-link-sub">Flexbox avancé</a>
+            <a href="#variables" class="sidebar-link sidebar-link-sub">Variables CSS</a>
+            <a href="#cq" class="sidebar-link sidebar-link-sub">Container Queries</a>
+            <a href="#layers" class="sidebar-link sidebar-link-sub">Cascade Layers</a>
+            <a href="#anim" class="sidebar-link sidebar-link-sub">Animations</a>
+            <a href="#houdini" class="sidebar-link sidebar-link-sub">CSS Houdini</a>
+            <a href="#fonctions" class="sidebar-link sidebar-link-sub">Fonctions modernes</a>
+            <a href="#subgrid" class="sidebar-link sidebar-link-sub">Subgrid</a>
+            <a href="#selectors" class="sidebar-link sidebar-link-sub">Sélecteurs avancés</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="index.html" class="btn btn-secondary btn-block">← Site public</a>
+        </div>
+    </aside>
+
+        <div class="dash-main">
+            <header class="dash-topbar">
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="dash-topbar-meta">
+                    <span class="dash-crumb">Cours</span>
+                    <strong>CSS avancé</strong>
+                </div>
+                <div class="dash-topbar-actions">
+                    <a href="js-avance.html" class="btn btn-primary">Suivant : JS →</a>
+                </div>
+            </header>
+
+            <main class="dash-content">
+                <section class="course-hero dash-hero course-hero-css">
+                    <p class="badge">Avancé · CSS · 10 sujets</p>
+                    <h1>CSS avancé</h1>
+                    <p>Grid, Flexbox, variables, container queries, layers, animations et sélecteurs modernes.</p>
+                </section>
+
+                <div class="course dash-course">
+<article class="lesson" id="grid">
+                    <h2>1. CSS Grid avancé</h2>
+                    <p>
+                        Grid permet des mises en page complexes en 2 dimensions :
+                        lignes, colonnes, zones nommées et placement explicite.
+                    </p>
+                    <pre><code>.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "nav  header header"
+    "nav  main   side"
+    "nav  footer footer";
+  gap: 12px;
+}
+.header { grid-area: header; }
+.nav    { grid-area: nav; }
+.main   { grid-area: main; }
+.side   { grid-area: side; }
+.footer { grid-area: footer; }</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — grid areas</h3>
+                        <div class="adv-grid">
+                            <div class="adv-grid-nav">nav</div>
+                            <div class="adv-grid-header">header</div>
+                            <div class="adv-grid-main">main</div>
+                            <div class="adv-grid-side">side</div>
+                            <div class="adv-grid-footer">footer</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="flexbox">
+                    <h2>2. Flexbox avancé</h2>
+                    <p>
+                        Au-delà de <code>justify-content</code>, Flexbox gère le wrapping,
+                        le ratio de croissance (<code>flex</code>) et l’alignement par item.
+                    </p>
+                    <pre><code>.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.toolbar .grow { flex: 1 1 180px; }
+.toolbar .fixed { flex: 0 0 auto; }</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — toolbar flexible</h3>
+                        <div class="adv-flex-bar">
+                            <span class="adv-chip fixed">Logo</span>
+                            <span class="adv-chip grow">Recherche…</span>
+                            <span class="adv-chip fixed">Profil</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="variables">
+                    <h2>3. Variables CSS</h2>
+                    <p>
+                        Les custom properties (<code>--nom</code>) permettent des thèmes
+                        dynamiques et une cohérence de design system.
+                    </p>
+                    <pre><code>:root {
+  --brand: #0f766e;
+  --radius: 12px;
+}
+[data-theme="dark"] {
+  --brand: #2dd4bf;
+  --surface: #0f172a;
+}
+.btn {
+  background: var(--brand);
+  border-radius: var(--radius);
+}</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — bascule de thème</h3>
+                        <div class="theme-box" id="theme-box" data-theme="light">
+                            <p>Cette carte utilise <code>var(--brand)</code>.</p>
+                            <button type="button" class="btn btn-primary" id="theme-toggle">Changer le thème</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="cq">
+                    <h2>4. Container Queries</h2>
+                    <p>
+                        Contrairement aux media queries (viewport), les
+                        <strong>container queries</strong> adaptent le style selon la taille
+                        du conteneur parent.
+                    </p>
+                    <pre><code>.card-wrap {
+  container-type: inline-size;
+}
+@container (min-width: 360px) {
+  .card-inner {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+  }
+}</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — redimensionne le conteneur</h3>
+                        <p class="demo-hint">Tire le coin bas-droit du cadre :</p>
+                        <div class="cq-wrap">
+                            <div class="cq-card">
+                                <div class="cq-thumb" aria-hidden="true"></div>
+                                <div>
+                                    <strong>Carte responsive au conteneur</strong>
+                                    <p>Sous ~320px : colonne. Au-delà : rangée.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="layers">
+                    <h2>5. Cascade Layers (<code>@layer</code>)</h2>
+                    <p>
+                        Les layers contrôlent la priorité des styles indépendamment de
+                        l’ordre et de la spécificité classique.
+                    </p>
+                    <pre><code>@layer reset, base, components, utilities;
+
+@layer base {
+  button { background: gray; }
+}
+@layer components {
+  .btn { background: blue; } /* gagne sur base */
+}
+@layer utilities {
+  .bg-red { background: red; } /* priorité max */
+}</code></pre>
+                    <ul class="checklist">
+                        <li>L’ordre de déclaration des layers définit la priorité</li>
+                        <li>Idéal pour séparer reset / composants / utilitaires</li>
+                    </ul>
+                </article>
+
+                <article class="lesson" id="anim">
+                    <h2>6. Animations complexes</h2>
+                    <p>
+                        Keyframes, transitions et timing-functions créent des micro-interactions
+                        fluides. Respecte toujours <code>prefers-reduced-motion</code>.
+                    </p>
+                    <pre><code>@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+.orb {
+  animation: float 2s ease-in-out infinite;
+  transition: box-shadow 0.25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .orb { animation: none; }
+}</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo</h3>
+                        <div class="adv-orbs" aria-hidden="true">
+                            <span class="orb orb-1"></span>
+                            <span class="orb orb-2"></span>
+                            <span class="orb orb-3"></span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="houdini">
+                    <h2>7. CSS Houdini</h2>
+                    <p>
+                        Houdini expose des APIs bas niveau pour étendre le moteur CSS
+                        (Paint Worklet, Properties &amp; Values, Layout…).
+                    </p>
+                    <pre><code>// Enregistrer une propriété typée
+CSS.registerProperty({
+  name: "--angle",
+  syntax: "&lt;angle&gt;",
+  inherits: false,
+  initialValue: "0deg"
+});
+
+// Paint Worklet (support variable selon navigateurs)
+CSS.paintWorklet.addModule("checkerboard.js");
+.box { background: paint(checkerboard); }</code></pre>
+                    <div class="note">
+                        Support encore partiel selon les navigateurs : vérifie la compatibilité
+                        avant un usage en production.
+                    </div>
+                </article>
+
+                <article class="lesson" id="fonctions">
+                    <h2>8. Fonctions modernes</h2>
+                    <p>
+                        <code>clamp()</code>, <code>min()</code>, <code>max()</code> et
+                        <code>calc()</code> rendent le design fluide sans media queries partout.
+                    </p>
+                    <pre><code>h1 {
+  font-size: clamp(1.5rem, 4vw + 0.5rem, 3rem);
+}
+.sidebar {
+  width: min(100%, 320px);
+}
+.card {
+  padding: max(1rem, 2vw);
+  width: calc(100% - 2rem);
+}</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — clamp() sur la taille du texte</h3>
+                        <p class="clamp-demo">
+                            Ce texte utilise <code>clamp(1rem, 2.5vw + 0.5rem, 1.75rem)</code>.
+                            Redimensionne la fenêtre pour voir l’effet.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="lesson" id="subgrid">
+                    <h2>9. Subgrid</h2>
+                    <p>
+                        <code>subgrid</code> aligne les grilles imbriquées sur les pistes
+                        de la grille parente — parfait pour des cartes de hauteurs égales.
+                    </p>
+                    <pre><code>.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.card {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3; /* titre + texte + bouton */
+}</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — cartes alignées</h3>
+                        <div class="subgrid-parent">
+                            <article class="subgrid-card">
+                                <h4>Court</h4>
+                                <p>Texte court.</p>
+                                <span class="adv-chip">Action</span>
+                            </article>
+                            <article class="subgrid-card">
+                                <h4>Titre un peu plus long</h4>
+                                <p>Un paragraphe plus développé pour illustrer l’alignement vertical des boutons.</p>
+                                <span class="adv-chip">Action</span>
+                            </article>
+                            <article class="subgrid-card">
+                                <h4>Moyen</h4>
+                                <p>Contenu intermédiaire dans la carte.</p>
+                                <span class="adv-chip">Action</span>
+                            </article>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson" id="selectors">
+                    <h2>10. Sélecteurs avancés</h2>
+                    <p>
+                        <code>:has()</code>, <code>:is()</code>, <code>:where()</code> et
+                        <code>:not()</code> simplifient des règles autrefois impossibles en CSS pur.
+                    </p>
+                    <pre><code>/* Parent qui contient un input invalide */
+.field:has(input:invalid) { border-color: red; }
+
+/* Grouper sans répéter */
+:is(h1, h2, h3) { line-height: 1.2; }
+
+/* Même chose, spécificité 0 */
+:where(.card, .panel) { margin-block: 1rem; }
+
+/* Exclure */
+button:not(:disabled) { cursor: pointer; }</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo — :has()</h3>
+                        <label class="has-field">
+                            Email (essaie un texte invalide)
+                            <input type="email" placeholder="toi@exemple.com" required>
+                        </label>
+                    </div>
+                </article>
+
+                <div class="course-nav">
+                    <a href="html-avance.html" class="btn btn-secondary">← HTML avancé</a>
+                    <a href="js-avance.html" class="btn btn-primary">JS avancé →</a>
+                </div>
+                </div>
+
+                <footer class="dash-footer">
+                    <p>© 2026 LearnCode — CSS avancé</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+<script>
+        const box = document.getElementById("theme-box");
+        document.getElementById("theme-toggle").addEventListener("click", () => {
+            const next = box.getAttribute("data-theme") === "light" ? "dark" : "light";
+            box.setAttribute("data-theme", next);
+        });
+    </script>
+</body>
+</html>

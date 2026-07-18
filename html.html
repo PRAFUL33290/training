@@ -5,38 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cours HTML — Les bases</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="dashboard.js" defer></script>
 </head>
-<body>
-    <header class="header">
-        <a href="index.html" class="logo">LearnCode</a>
-        <nav class="menu">
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="html.html" class="active">HTML</a></li>
-                <li><a href="css.html">CSS</a></li>
-                <li><a href="java.html">Java</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <a href="css.html" class="btn btn-primary">Suivant : CSS</a>
+<body class="layout-dash">
+    <div class="dash">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation dashboard">
+        <div class="sidebar-brand">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span>
+                    <strong>LearnCode</strong>
+                    <small>Dashboard cours</small>
+                </span>
+            </a>
+            <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
         </div>
-    </header>
 
-    <main>
-        <section class="course-hero">
-            <div class="container">
-                <p class="badge">Cours 1 / 3</p>
-                <h1>Les bases de HTML</h1>
-                <p>
-                    HTML (HyperText Markup Language) décrit la structure d’une page web
-                    avec des balises.
-                </p>
-            </div>
-        </section>
+        <nav class="sidebar-nav">
+            <p class="sidebar-label">Général</p>
+            <a href="index.html" class="sidebar-link">
+                <span class="sidebar-ico" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </span>
+                Accueil
+            </a>
 
-        <section class="section">
-            <div class="container course">
-                <article class="lesson">
+            <p class="sidebar-label">Bases</p>
+            <a href="html.html" class="sidebar-link is-active">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H</span>
+                HTML
+            </a>
+            <a href="css.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C</span>
+                CSS
+            </a>
+            <a href="java.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-java" aria-hidden="true">J</span>
+                Java
+            </a>
+
+            <p class="sidebar-label">Avancé</p>
+            <a href="html-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H+</span>
+                HTML avancé
+            </a>
+            <a href="css-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C+</span>
+                CSS avancé
+            </a>
+            <a href="js-avance.html" class="sidebar-link">
+                <span class="sidebar-ico sidebar-ico-js" aria-hidden="true">JS</span>
+                JS avancé
+            </a>
+            <p class="sidebar-label">Dans ce cours</p>
+            <a href="#l1" class="sidebar-link sidebar-link-sub">Qu’est-ce que HTML ?</a>
+            <a href="#l2" class="sidebar-link sidebar-link-sub">Structure d’une page</a>
+            <a href="#l3" class="sidebar-link sidebar-link-sub">Titres et paragraphes</a>
+            <a href="#l4" class="sidebar-link sidebar-link-sub">Liens et images</a>
+            <a href="#l5" class="sidebar-link sidebar-link-sub">Listes</a>
+            <a href="#l6" class="sidebar-link sidebar-link-sub">Formulaire simple</a>
+            <a href="#l7" class="sidebar-link sidebar-link-sub">Balises utiles</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="index.html" class="btn btn-secondary btn-block">← Site public</a>
+        </div>
+    </aside>
+
+        <div class="dash-main">
+            <header class="dash-topbar">
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="dash-topbar-meta">
+                    <span class="dash-crumb">Cours</span>
+                    <strong>Les bases de HTML</strong>
+                </div>
+                <div class="dash-topbar-actions">
+                    <a href="css.html" class="btn btn-primary">Suivant : CSS</a>
+                </div>
+            </header>
+
+            <main class="dash-content">
+                <section class="course-hero dash-hero">
+                    <p class="badge">Cours 1 / 3 · Bases</p>
+                    <h1>Les bases de HTML</h1>
+                    <p>HTML (HyperText Markup Language) décrit la structure d’une page web avec des balises.</p>
+                </section>
+
+                <div class="course dash-course">
+<article class="lesson" id="l1">
                     <h2>1. Qu’est-ce que HTML ?</h2>
                     <p>
                         HTML n’est pas un langage de programmation : c’est un langage de
@@ -46,7 +110,7 @@
                     <pre><code>&lt;p&gt;Bonjour le monde&lt;/p&gt;</code></pre>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l2">
                     <h2>2. Structure d’une page</h2>
                     <p>Toute page HTML commence comme ceci :</p>
                     <pre><code>&lt;!DOCTYPE html&gt;
@@ -66,7 +130,7 @@
                     </ul>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l3">
                     <h2>3. Titres et paragraphes</h2>
                     <p>Il existe 6 niveaux de titres, de <code>h1</code> (le plus important) à <code>h6</code>.</p>
                     <pre><code>&lt;h1&gt;Titre principal&lt;/h1&gt;
@@ -80,7 +144,7 @@
                     </div>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l4">
                     <h2>4. Liens et images</h2>
                     <pre><code>&lt;a href="https://exemple.com"&gt;Visiter le site&lt;/a&gt;
 
@@ -92,7 +156,7 @@
                     </ul>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l5">
                     <h2>5. Listes</h2>
                     <pre><code>&lt;!-- Liste à puces --&gt;
 &lt;ul&gt;
@@ -107,7 +171,7 @@
 &lt;/ol&gt;</code></pre>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l6">
                     <h2>6. Formulaire simple</h2>
                     <pre><code>&lt;form action="#" method="post"&gt;
     &lt;label for="nom"&gt;Nom&lt;/label&gt;
@@ -134,7 +198,7 @@
                     </div>
                 </article>
 
-                <article class="lesson">
+                <article class="lesson" id="l7">
                     <h2>7. Balises utiles à retenir</h2>
                     <div class="table-wrap">
                         <table>
@@ -159,19 +223,20 @@
 
                 <div class="course-nav">
                     <a href="index.html" class="btn btn-secondary">← Accueil</a>
-                    <a href="css.html" class="btn btn-primary">Cours CSS →</a>
+                    <div class="course-nav-end">
+                        <a href="html-avance.html" class="btn btn-secondary">HTML avancé</a>
+                        <a href="css.html" class="btn btn-primary">Cours CSS →</a>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
+                </div>
 
-    <footer class="footer">
-        <p>© 2026 LearnCode — Cours HTML</p>
-        <nav class="footer-links">
-            <a href="html.html">HTML</a>
-            <a href="css.html">CSS</a>
-            <a href="java.html">Java</a>
-        </nav>
-    </footer>
+                <footer class="dash-footer">
+                    <p>© 2026 LearnCode — Les bases de HTML</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
 </body>
 </html>

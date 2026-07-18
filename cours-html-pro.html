@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML pour améliorer un site — LearnCode</title>
+    <meta name="description" content="Structure, sémantique, balises essentielles, images, formulaires et problèmes concrets.">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dashboard.js" defer></script>
+</head>
+<body class="layout-dash">
+    <div class="dash">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation dashboard">
+        <div class="sidebar-brand">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span><strong>LearnCode</strong><small>Dashboard cours</small></span>
+            </a>
+            <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <p class="sidebar-label">Général</p>
+            <a href="index.html" class="sidebar-link"><span class="sidebar-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span> Accueil</a>
+            <p class="sidebar-label">Bases</p>
+            <a href="html.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H</span> HTML</a>
+            <a href="css.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C</span> CSS</a>
+            <a href="java.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-java" aria-hidden="true">J</span> Java</a>
+            <p class="sidebar-label">Avancé</p>
+            <a href="html-avance.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H+</span> HTML avancé</a>
+            <a href="css-avance.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C+</span> CSS avancé</a>
+            <a href="js-avance.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-js" aria-hidden="true">JS</span> JS avancé</a>
+            <p class="sidebar-label">Parcours pro</p>
+            <a href="cours-html-pro.html" class="sidebar-link is-active"><span class="sidebar-ico sidebar-ico-html" aria-hidden="true">1</span> HTML pro</a>
+            <a href="cours-css-pro.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-css" aria-hidden="true">2</span> CSS pro</a>
+            <a href="cours-js-pro.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-js" aria-hidden="true">3</span> JS pro</a>
+            <a href="cours-projet.html" class="sidebar-link"><span class="sidebar-ico" aria-hidden="true">4</span> Projet &amp; checklist</a>
+            <a href="chronosite-demo.html" class="sidebar-link"><span class="sidebar-ico" aria-hidden="true">▶</span> Démo ChronoSite</a>
+            <p class="sidebar-label">Dans ce cours</p>
+            <a href="#ch1" class="sidebar-link sidebar-link-sub">1. Comprendre le rôle de HTML, CSS et JavaS…</a>
+            <a href="#ch2" class="sidebar-link sidebar-link-sub">2. Organisation d’un projet web propre</a>
+            <a href="#ch3" class="sidebar-link sidebar-link-sub">3. HTML : construire la structure du site</a>
+            <a href="#ch4" class="sidebar-link sidebar-link-sub">4. HTML sémantique : SEO, accessibilité et …</a>
+            <a href="#ch5" class="sidebar-link sidebar-link-sub">5. Les balises essentielles HTML</a>
+            <a href="#ch6" class="sidebar-link sidebar-link-sub">6. Images, vidéos, liens et boutons</a>
+            <a href="#ch7" class="sidebar-link sidebar-link-sub">7. Les formulaires HTML</a>
+            <a href="#ch8" class="sidebar-link sidebar-link-sub">8. Problématiques HTML concrètes</a>
+        </nav>
+        <div class="sidebar-footer"><a href="index.html" class="btn btn-secondary btn-block">← Site public</a></div>
+    </aside>
+        <div class="dash-main">
+            <header class="dash-topbar">
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <div class="dash-topbar-meta">
+                    <span class="dash-crumb">Parcours pro</span>
+                    <strong>HTML pour améliorer un site</strong>
+                </div>
+                <div class="dash-topbar-actions">
+                    <a href="cours-css-pro.html" class="btn btn-primary">Partie 2 : CSS →</a>
+                </div>
+            </header>
+            <main class="dash-content">
+                <section class="course-hero dash-hero">
+                    <p class="badge">Parcours pro · Partie 1 / 4</p>
+                    <h1>HTML pour améliorer un site</h1>
+                    <p>Structure, sémantique, balises essentielles, images, formulaires et problèmes concrets.</p>
+                </section>
+                <div class="course dash-course">
+                <article class="lesson" id="ch1">
+                    <h2>1. Comprendre le rôle de HTML, CSS et JavaScript</h2>
+<p>Un site web fonctionne souvent avec 3 grandes couches :</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Technologie</th><th>Rôle</th><th>Exemple concret</th></tr></thead>
+<tbody>
+<tr><td>HTML</td><td>Structure</td><td>titres, paragraphes, sections, boutons, formulaire</td></tr>
+<tr><td>CSS</td><td>Apparence</td><td>couleurs, tailles, animations, responsive</td></tr>
+<tr><td>JavaScript</td><td>Interaction</td><td>menu mobile, formulaire dynamique, FAQ, sliders</td></tr>
+</tbody>
+</table></div>
+<h3>Image simple</h3>
+<p>Imagine une maison :</p>
+<ul class="checklist">
+<li>HTML = les murs, les pièces, les portes.</li>
+<li>CSS = la peinture, la décoration, les lumières.</li>
+<li>JavaScript = l’électricité, les interrupteurs, les portes automatiques.</li>
+</ul>
+<h3>Important : Java ou JavaScript ?</h3>
+<p>Pour améliorer un site web côté navigateur, le langage utilisé est <strong>JavaScript</strong>, pas Java.</p>
+<ul class="checklist">
+<li><strong>JavaScript</strong> : utilisé dans les pages web pour créer des interactions.</li>
+<li><strong>Java</strong> : langage différent, souvent utilisé pour des applications, Android, serveurs, logiciels métiers.</li>
+</ul>
+<p>Dans ce cours, “JAVA” est donc traité comme <strong>JavaScript</strong>, parce que c’est ce qui va t’aider directement à améliorer ton site.</p>
+                </article>
+                <article class="lesson" id="ch2">
+                    <h2>2. Organisation d’un projet web propre</h2>
+<p>Avant de coder, il faut bien ranger les fichiers.</p>
+<h3>Structure conseillée</h3>
+<pre><code class="lang-txt">mon-site/
+│
+├── index.html
+├── about.html
+├── contact.html
+│
+├── assets/
+│   ├── images/
+│   │   ├── hero.webp
+│   │   └── logo.svg
+│   │
+│   ├── css/
+│   │   └── style.css
+│   │
+│   └── js/
+│       └── script.js</code></pre>
+<h3>Pourquoi c’est important ?</h3>
+<p>Quand un site grandit, si tout est mélangé, tu perds du temps.</p>
+<p>Mauvaise organisation :</p>
+<pre><code class="lang-txt">index.html
+image1.png
+test.html
+style2.css
+ancien-style.css
+script-final-vrai.js
+logo-new-final-final.png</code></pre>
+<p>Bonne organisation :</p>
+<pre><code class="lang-txt">assets/images/
+assets/css/
+assets/js/</code></pre>
+<h3>Situation concrète</h3>
+<p>Tu fais un site pour un client avec :</p>
+<ul class="checklist">
+<li>une page d’accueil,</li>
+<li>une page services,</li>
+<li>une page tarifs,</li>
+<li>une page contact.</li>
+</ul>
+<p>Si les images, CSS et scripts sont bien rangés, tu peux modifier le site rapidement sans casser tout le projet.</p>
+                </article>
+                <article class="lesson" id="ch3">
+                    <h2>3. HTML : construire la structure du site</h2>
+<p>HTML signifie <strong>HyperText Markup Language</strong>. C’est le langage de structure d’une page web.</p>
+<h3>Structure minimum d’une page HTML</h3>
+<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fr&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;ChronoSite - Création de sites web rapides&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;Création de sites web professionnels rapides et abordables à Parempuyre et Bordeaux Métropole.&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Votre site web professionnel livré rapidement&lt;/h1&gt;
+  &lt;p&gt;Je crée des sites modernes, rapides et adaptés aux petites entreprises.&lt;/p&gt;
+
+  &lt;script src=&quot;assets/js/script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3>Explication</h3>
+<pre><code class="lang-html">&lt;!DOCTYPE html&gt;</code></pre>
+<p>Indique au navigateur que la page utilise HTML moderne.</p>
+<pre><code class="lang-html">&lt;html lang=&quot;fr&quot;&gt;</code></pre>
+<p>Indique que la langue principale est le français. C’est bon pour l’accessibilité et le SEO.</p>
+<pre><code class="lang-html">&lt;meta charset=&quot;UTF-8&quot;&gt;</code></pre>
+<p>Permet d’afficher correctement les accents : é, è, à, ç.</p>
+<pre><code class="lang-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
+<p>Indispensable pour que le site soit responsive sur mobile.</p>
+<pre><code class="lang-html">&lt;title&gt;</code></pre>
+<p>Titre visible dans l’onglet du navigateur et utilisé par Google.</p>
+<pre><code class="lang-html">&lt;meta name=&quot;description&quot;&gt;</code></pre>
+<p>Résumé de la page pour les moteurs de recherche.</p>
+                </article>
+                <article class="lesson" id="ch4">
+                    <h2>4. HTML sémantique : SEO, accessibilité et lisibilité</h2>
+<p>Le HTML sémantique consiste à utiliser les bonnes balises pour le bon rôle.</p>
+<h3>Mauvais HTML</h3>
+<pre><code class="lang-html">&lt;div class=&quot;titre&quot;&gt;Bienvenue&lt;/div&gt;
+&lt;div class=&quot;menu&quot;&gt;Accueil - Services - Contact&lt;/div&gt;
+&lt;div class=&quot;bloc&quot;&gt;Je crée des sites web.&lt;/div&gt;</code></pre>
+<p>Le navigateur voit seulement des <code>div</code>. Il ne comprend pas vraiment la structure.</p>
+<h3>Bon HTML</h3>
+<pre><code class="lang-html">&lt;header&gt;
+  &lt;nav&gt;
+    &lt;a href=&quot;index.html&quot;&gt;Accueil&lt;/a&gt;
+    &lt;a href=&quot;services.html&quot;&gt;Services&lt;/a&gt;
+    &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h1&gt;Bienvenue&lt;/h1&gt;
+    &lt;p&gt;Je crée des sites web professionnels.&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;© 2026 ChronoSite&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+<p>Là, la page est claire :</p>
+<ul class="checklist">
+<li><code>header</code> = haut du site,</li>
+<li><code>nav</code> = navigation,</li>
+<li><code>main</code> = contenu principal,</li>
+<li><code>section</code> = bloc de contenu,</li>
+<li><code>footer</code> = bas de page.</li>
+</ul>
+<h3>Balises sémantiques importantes</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Balise</th><th>Utilisation</th></tr></thead>
+<tbody>
+<tr><td><code>header</code></td><td>En-tête du site ou d’une section</td></tr>
+<tr><td><code>nav</code></td><td>Menu de navigation</td></tr>
+<tr><td><code>main</code></td><td>Contenu principal de la page</td></tr>
+<tr><td><code>section</code></td><td>Section thématique</td></tr>
+<tr><td><code>article</code></td><td>Contenu indépendant : article, carte, actualité</td></tr>
+<tr><td><code>aside</code></td><td>Contenu secondaire</td></tr>
+<tr><td><code>footer</code></td><td>Pied de page</td></tr>
+<tr><td><code>figure</code></td><td>Image avec légende</td></tr>
+<tr><td><code>figcaption</code></td><td>Légende d’une image</td></tr>
+</tbody>
+</table></div>
+<h3>Situation concrète</h3>
+<p>Tu veux améliorer ton site pour Google.</p>
+<p>Avant :</p>
+<pre><code class="lang-html">&lt;div class=&quot;titre&quot;&gt;Création de site web&lt;/div&gt;</code></pre>
+<p>Après :</p>
+<pre><code class="lang-html">&lt;h1&gt;Création de site web à Parempuyre et Bordeaux Métropole&lt;/h1&gt;</code></pre>
+<p>La deuxième version est meilleure, car Google et les lecteurs d’écran comprennent que c’est le titre principal.</p>
+                </article>
+                <article class="lesson" id="ch5">
+                    <h2>5. Les balises essentielles HTML</h2>
+<h3>Titres</h3>
+<pre><code class="lang-html">&lt;h1&gt;Titre principal&lt;/h1&gt;
+&lt;h2&gt;Sous-titre important&lt;/h2&gt;
+&lt;h3&gt;Titre de bloc&lt;/h3&gt;
+&lt;h4&gt;Titre secondaire&lt;/h4&gt;</code></pre>
+<p>Règle importante :</p>
+<ul class="checklist">
+<li>un seul <code>h1</code> principal par page,</li>
+<li>plusieurs <code>h2</code> pour organiser les grandes parties,</li>
+<li>des <code>h3</code> à l’intérieur des <code>h2</code>.</li>
+</ul>
+<h3>Paragraphes</h3>
+<pre><code class="lang-html">&lt;p&gt;Je crée des sites web modernes, rapides et adaptés aux indépendants.&lt;/p&gt;</code></pre>
+<h3>Listes</h3>
+<p>Liste non ordonnée :</p>
+<pre><code class="lang-html">&lt;ul&gt;
+  &lt;li&gt;Site vitrine&lt;/li&gt;
+  &lt;li&gt;Landing page&lt;/li&gt;
+  &lt;li&gt;Maintenance&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p>Liste ordonnée :</p>
+<pre><code class="lang-html">&lt;ol&gt;
+  &lt;li&gt;Choix du modèle&lt;/li&gt;
+  &lt;li&gt;Ajout des contenus&lt;/li&gt;
+  &lt;li&gt;Validation client&lt;/li&gt;
+  &lt;li&gt;Mise en ligne&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<h3>Liens</h3>
+<pre><code class="lang-html">&lt;a href=&quot;contact.html&quot;&gt;Me contacter&lt;/a&gt;</code></pre>
+<p>Lien externe :</p>
+<pre><code class="lang-html">&lt;a href=&quot;https://example.com&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+  Voir le site
+&lt;/a&gt;</code></pre>
+<h3>Boutons</h3>
+<pre><code class="lang-html">&lt;button type=&quot;button&quot;&gt;Ouvrir le menu&lt;/button&gt;</code></pre>
+<h3>Important : lien ou bouton ?</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Élément</th><th>Quand l’utiliser</th></tr></thead>
+<tbody>
+<tr><td><code>a</code></td><td>Pour aller vers une autre page ou une autre section</td></tr>
+<tr><td><code>button</code></td><td>Pour déclencher une action JavaScript</td></tr>
+</tbody>
+</table></div>
+<p>Exemple :</p>
+<pre><code class="lang-html">&lt;a href=&quot;#contact&quot;&gt;Demander un devis&lt;/a&gt;
+&lt;button type=&quot;button&quot; id=&quot;open-menu&quot;&gt;Menu&lt;/button&gt;</code></pre>
+                </article>
+                <article class="lesson" id="ch6">
+                    <h2>6. Images, vidéos, liens et boutons</h2>
+<h3>Image simple</h3>
+<pre><code class="lang-html">&lt;img src=&quot;assets/images/hero.webp&quot; alt=&quot;Ordinateur affichant une maquette de site web moderne&quot;&gt;</code></pre>
+<h3>Le <code>alt</code></h3>
+<p>Le texte alternatif sert à :</p>
+<ul class="checklist">
+<li>expliquer l’image aux lecteurs d’écran,</li>
+<li>aider si l’image ne charge pas,</li>
+<li>améliorer la compréhension du contenu.</li>
+</ul>
+<p>Mauvais :</p>
+<pre><code class="lang-html">&lt;img src=&quot;image.webp&quot; alt=&quot;image&quot;&gt;</code></pre>
+<p>Bon :</p>
+<pre><code class="lang-html">&lt;img src=&quot;image.webp&quot; alt=&quot;Mockup d’un site web professionnel sur ordinateur portable&quot;&gt;</code></pre>
+<h3>Image décorative</h3>
+<p>Si l’image est purement décorative :</p>
+<pre><code class="lang-html">&lt;img src=&quot;assets/images/shape.svg&quot; alt=&quot;&quot;&gt;</code></pre>
+<h3>Image responsive</h3>
+<p>HTML :</p>
+<pre><code class="lang-html">&lt;img class=&quot;hero-img&quot; src=&quot;assets/images/hero.webp&quot; alt=&quot;Maquette du site ChronoSite&quot;&gt;</code></pre>
+<p>CSS :</p>
+<pre><code class="lang-css">.hero-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}</code></pre>
+<h3>Vidéo</h3>
+<pre><code class="lang-html">&lt;video controls width=&quot;800&quot;&gt;
+  &lt;source src=&quot;assets/videos/presentation.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  Votre navigateur ne supporte pas la vidéo.
+&lt;/video&gt;</code></pre>
+<h3>Problématique concrète</h3>
+<p>Tu ajoutes une image énorme sur ton site et la page devient lente.</p>
+<p>Solution :</p>
+<ul class="checklist">
+<li>utiliser <code>.webp</code>,</li>
+<li>réduire la taille de l’image,</li>
+<li>ajouter <code>max-width: 100%</code>,</li>
+<li>éviter de charger une image de 4000 px si elle s’affiche en 600 px.</li>
+</ul>
+                </article>
+                <article class="lesson" id="ch7">
+                    <h2>7. Les formulaires HTML</h2>
+<p>Un formulaire sert à récupérer des informations.</p>
+<h3>Formulaire de contact simple</h3>
+<pre><code class="lang-html">&lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;name&quot;&gt;Nom&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;label for=&quot;message&quot;&gt;Message&lt;/label&gt;
+    &lt;textarea id=&quot;message&quot; name=&quot;message&quot; rows=&quot;5&quot; required&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+<h3>Types d’input utiles</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Type</th><th>Utilisation</th></tr></thead>
+<tbody>
+<tr><td><code>text</code></td><td>Texte simple</td></tr>
+<tr><td><code>email</code></td><td>Adresse email</td></tr>
+<tr><td><code>tel</code></td><td>Téléphone</td></tr>
+<tr><td><code>number</code></td><td>Nombre</td></tr>
+<tr><td><code>date</code></td><td>Date</td></tr>
+<tr><td><code>checkbox</code></td><td>Case à cocher</td></tr>
+<tr><td><code>radio</code></td><td>Choix unique</td></tr>
+<tr><td><code>file</code></td><td>Envoi de fichier</td></tr>
+<tr><td><code>password</code></td><td>Mot de passe</td></tr>
+</tbody>
+</table></div>
+<h3>Exemple pour un devis de site web</h3>
+<pre><code class="lang-html">&lt;form class=&quot;quote-form&quot;&gt;
+  &lt;label for=&quot;project&quot;&gt;Type de projet&lt;/label&gt;
+  &lt;select id=&quot;project&quot; name=&quot;project&quot; required&gt;
+    &lt;option value=&quot;&quot;&gt;Choisir une option&lt;/option&gt;
+    &lt;option value=&quot;site-vitrine&quot;&gt;Site vitrine&lt;/option&gt;
+    &lt;option value=&quot;landing-page&quot;&gt;Landing page&lt;/option&gt;
+    &lt;option value=&quot;maintenance&quot;&gt;Maintenance&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;label for=&quot;budget&quot;&gt;Budget estimé&lt;/label&gt;
+  &lt;input type=&quot;number&quot; id=&quot;budget&quot; name=&quot;budget&quot; min=&quot;100&quot; step=&quot;50&quot;&gt;
+
+  &lt;label for=&quot;deadline&quot;&gt;Date souhaitée&lt;/label&gt;
+  &lt;input type=&quot;date&quot; id=&quot;deadline&quot; name=&quot;deadline&quot;&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Demander un devis&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+<h3>Bonne pratique</h3>
+<p>Toujours associer un <code>label</code> à chaque champ.</p>
+<p>Mauvais :</p>
+<pre><code class="lang-html">&lt;input type=&quot;email&quot; placeholder=&quot;Email&quot;&gt;</code></pre>
+<p>Bon :</p>
+<pre><code class="lang-html">&lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;ton@email.fr&quot;&gt;</code></pre>
+                </article>
+                <article class="lesson" id="ch8">
+                    <h2>8. Problématiques HTML concrètes</h2>
+<h3>Problème 1 : mon site n’est pas clair pour Google</h3>
+<h4>Symptôme</h4>
+<p>Tu as beaucoup de <code>div</code>, mais peu de vrais titres.</p>
+<h4>Mauvais exemple</h4>
+<pre><code class="lang-html">&lt;div class=&quot;big-title&quot;&gt;Mes services&lt;/div&gt;
+&lt;div class=&quot;service-title&quot;&gt;Site vitrine&lt;/div&gt;</code></pre>
+<h4>Correction</h4>
+<pre><code class="lang-html">&lt;section aria-labelledby=&quot;services-title&quot;&gt;
+  &lt;h2 id=&quot;services-title&quot;&gt;Mes services&lt;/h2&gt;
+
+  &lt;article&gt;
+    &lt;h3&gt;Site vitrine&lt;/h3&gt;
+    &lt;p&gt;Un site simple pour présenter ton activité.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</code></pre>
+<h3>Problème 2 : le formulaire est difficile à utiliser</h3>
+<h4>Mauvais exemple</h4>
+<pre><code class="lang-html">&lt;input placeholder=&quot;Nom&quot;&gt;
+&lt;input placeholder=&quot;Email&quot;&gt;
+&lt;textarea placeholder=&quot;Message&quot;&gt;&lt;/textarea&gt;</code></pre>
+<h4>Correction</h4>
+<pre><code class="lang-html">&lt;label for=&quot;name&quot;&gt;Nom&lt;/label&gt;
+&lt;input id=&quot;name&quot; name=&quot;name&quot; type=&quot;text&quot; required&gt;
+
+&lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+&lt;input id=&quot;email&quot; name=&quot;email&quot; type=&quot;email&quot; required&gt;
+
+&lt;label for=&quot;message&quot;&gt;Message&lt;/label&gt;
+&lt;textarea id=&quot;message&quot; name=&quot;message&quot; required&gt;&lt;/textarea&gt;</code></pre>
+<h3>Problème 3 : trop de titres <code>h1</code></h3>
+<h4>Mauvais exemple</h4>
+<pre><code class="lang-html">&lt;h1&gt;Accueil&lt;/h1&gt;
+&lt;h1&gt;Services&lt;/h1&gt;
+&lt;h1&gt;Contact&lt;/h1&gt;</code></pre>
+<h4>Correction</h4>
+<pre><code class="lang-html">&lt;h1&gt;Création de sites web rapides et professionnels&lt;/h1&gt;
+&lt;h2&gt;Services&lt;/h2&gt;
+&lt;h2&gt;Contact&lt;/h2&gt;</code></pre>
+                </article>
+                <div class="course-nav">
+                    <a href="index.html" class="btn btn-secondary">← Accueil</a>
+                    <div class="course-nav-end">
+                        <a href="cours-css-pro.html" class="btn btn-primary">Partie 2 : CSS →</a>
+                    </div>
+                </div>
+                </div>
+                <footer class="dash-footer"><p>© 2026 LearnCode — HTML pour améliorer un site</p></footer>
+            </main>
+        </div>
+    </div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
+</body>
+</html>

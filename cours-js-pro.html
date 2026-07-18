@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript utile pour le web — LearnCode</title>
+    <meta name="description" content="DOM, événements, menu mobile, formulaire, FAQ, mode sombre, localStorage et Fetch.">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dashboard.js" defer></script>
+</head>
+<body class="layout-dash">
+    <div class="dash">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation dashboard">
+        <div class="sidebar-brand">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span><strong>LearnCode</strong><small>Dashboard cours</small></span>
+            </a>
+            <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <p class="sidebar-label">Général</p>
+            <a href="index.html" class="sidebar-link"><span class="sidebar-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span> Accueil</a>
+            <p class="sidebar-label">Bases</p>
+            <a href="html.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H</span> HTML</a>
+            <a href="css.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C</span> CSS</a>
+            <a href="java.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-java" aria-hidden="true">J</span> Java</a>
+            <p class="sidebar-label">Avancé</p>
+            <a href="html-avance.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-html" aria-hidden="true">H+</span> HTML avancé</a>
+            <a href="css-avance.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-css" aria-hidden="true">C+</span> CSS avancé</a>
+            <a href="js-avance.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-js" aria-hidden="true">JS</span> JS avancé</a>
+            <p class="sidebar-label">Parcours pro</p>
+            <a href="cours-html-pro.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-html" aria-hidden="true">1</span> HTML pro</a>
+            <a href="cours-css-pro.html" class="sidebar-link"><span class="sidebar-ico sidebar-ico-css" aria-hidden="true">2</span> CSS pro</a>
+            <a href="cours-js-pro.html" class="sidebar-link is-active"><span class="sidebar-ico sidebar-ico-js" aria-hidden="true">3</span> JS pro</a>
+            <a href="cours-projet.html" class="sidebar-link"><span class="sidebar-ico" aria-hidden="true">4</span> Projet &amp; checklist</a>
+            <a href="chronosite-demo.html" class="sidebar-link"><span class="sidebar-ico" aria-hidden="true">▶</span> Démo ChronoSite</a>
+            <p class="sidebar-label">Dans ce cours</p>
+            <a href="#ch22" class="sidebar-link sidebar-link-sub">22. JavaScript : rendre le site vivant</a>
+            <a href="#ch23" class="sidebar-link sidebar-link-sub">23. Variables, conditions, fonctions et tabl…</a>
+            <a href="#ch24" class="sidebar-link sidebar-link-sub">24. Manipuler le DOM</a>
+            <a href="#ch25" class="sidebar-link sidebar-link-sub">25. Événements JavaScript</a>
+            <a href="#ch26" class="sidebar-link sidebar-link-sub">26. Menu mobile</a>
+            <a href="#ch27" class="sidebar-link sidebar-link-sub">27. Formulaire interactif</a>
+            <a href="#ch28" class="sidebar-link sidebar-link-sub">28. FAQ accordéon</a>
+            <a href="#ch29" class="sidebar-link sidebar-link-sub">29. Mode sombre</a>
+            <a href="#ch30" class="sidebar-link sidebar-link-sub">30. Sauvegarde avec localStorage</a>
+            <a href="#ch31" class="sidebar-link sidebar-link-sub">31. Fetch API : préparer un site dynamique</a>
+            <a href="#ch32" class="sidebar-link sidebar-link-sub">32. Problématiques JavaScript concrètes</a>
+        </nav>
+        <div class="sidebar-footer"><a href="index.html" class="btn btn-secondary btn-block">← Site public</a></div>
+    </aside>
+        <div class="dash-main">
+            <header class="dash-topbar">
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <div class="dash-topbar-meta">
+                    <span class="dash-crumb">Parcours pro</span>
+                    <strong>JavaScript utile pour le web</strong>
+                </div>
+                <div class="dash-topbar-actions">
+                    <a href="cours-projet.html" class="btn btn-primary">Partie 4 : Projet →</a>
+                </div>
+            </header>
+            <main class="dash-content">
+                <section class="course-hero dash-hero course-hero-js">
+                    <p class="badge">Parcours pro · Partie 3 / 4</p>
+                    <h1>JavaScript utile pour le web</h1>
+                    <p>DOM, événements, menu mobile, formulaire, FAQ, mode sombre, localStorage et Fetch.</p>
+                </section>
+                <div class="course dash-course">
+                <article class="lesson" id="ch22">
+                    <h2>22. JavaScript : rendre le site vivant</h2>
+<p>JavaScript permet d’ajouter de l’interaction.</p>
+<p>Exemples :</p>
+<ul class="checklist">
+<li>ouvrir un menu mobile,</li>
+<li>valider un formulaire,</li>
+<li>afficher une FAQ,</li>
+<li>sauvegarder un choix utilisateur,</li>
+<li>charger des données,</li>
+<li>animer des éléments,</li>
+<li>filtrer une galerie,</li>
+<li>afficher un message après clic.</li>
+</ul>
+<h3>Ajouter JavaScript au HTML</h3>
+<p>En bas du <code>body</code> :</p>
+<pre><code class="lang-html">&lt;script src=&quot;assets/js/script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<p>Ou dans le <code>head</code> avec <code>defer</code> :</p>
+<pre><code class="lang-html">&lt;script src=&quot;assets/js/script.js&quot; defer&gt;&lt;/script&gt;</code></pre>
+<p>Mon conseil :</p>
+<pre><code class="lang-html">&lt;script src=&quot;assets/js/script.js&quot; defer&gt;&lt;/script&gt;</code></pre>
+<p>Cela charge le script sans bloquer la page.</p>
+                </article>
+                <article class="lesson" id="ch23">
+                    <h2>23. Variables, conditions, fonctions et tableaux</h2>
+<h3>Variables</h3>
+<pre><code class="lang-js">const siteName = &quot;ChronoSite&quot;;
+let visitorCount = 0;</code></pre>
+<ul class="checklist">
+<li><code>const</code> : valeur qui ne change pas.</li>
+<li><code>let</code> : valeur qui peut changer.</li>
+</ul>
+<p>Évite <code>var</code> dans les projets modernes.</p>
+<h3>Types de données</h3>
+<pre><code class="lang-js">const name = &quot;Julien&quot;;       // string
+const age = 37;              // number
+const isOnline = true;       // boolean
+const services = [&quot;Site&quot;, &quot;SEO&quot;, &quot;Maintenance&quot;]; // array</code></pre>
+<h3>Conditions</h3>
+<pre><code class="lang-js">const budget = 300;
+
+if (budget &gt;= 500) {
+  console.log(&quot;Projet complet possible&quot;);
+} else if (budget &gt;= 250) {
+  console.log(&quot;Projet simple possible&quot;);
+} else {
+  console.log(&quot;Prévoir une formule mini&quot;);
+}</code></pre>
+<h3>Fonctions</h3>
+<pre><code class="lang-js">function calculatePrice(basePrice, optionsPrice) {
+  return basePrice + optionsPrice;
+}
+
+const total = calculatePrice(300, 80);
+console.log(total);</code></pre>
+<h3>Fonction fléchée</h3>
+<pre><code class="lang-js">const calculatePrice = (basePrice, optionsPrice) =&gt; {
+  return basePrice + optionsPrice;
+};</code></pre>
+<h3>Tableaux</h3>
+<pre><code class="lang-js">const services = [&quot;Site vitrine&quot;, &quot;Landing page&quot;, &quot;Maintenance&quot;];
+
+services.forEach((service) =&gt; {
+  console.log(service);
+});</code></pre>
+<h3>Objets</h3>
+<pre><code class="lang-js">const offer = {
+  name: &quot;Site vitrine&quot;,
+  price: 490,
+  duration: &quot;5 jours&quot;,
+  includedHosting: true
+};
+
+console.log(offer.name);</code></pre>
+                </article>
+                <article class="lesson" id="ch24">
+                    <h2>24. Manipuler le DOM</h2>
+<p>Le DOM est la représentation HTML de la page dans JavaScript.</p>
+<h3>Sélectionner un élément</h3>
+<p>HTML :</p>
+<pre><code class="lang-html">&lt;h1 id=&quot;hero-title&quot;&gt;Bienvenue&lt;/h1&gt;</code></pre>
+<p>JS :</p>
+<pre><code class="lang-js">const title = document.querySelector(&quot;#hero-title&quot;);
+console.log(title);</code></pre>
+<h3>Modifier du texte</h3>
+<pre><code class="lang-js">title.textContent = &quot;Votre site web professionnel livré rapidement&quot;;</code></pre>
+<h3>Modifier une classe</h3>
+<pre><code class="lang-js">title.classList.add(&quot;is-visible&quot;);
+title.classList.remove(&quot;is-hidden&quot;);
+title.classList.toggle(&quot;active&quot;);</code></pre>
+<h3>Modifier un attribut</h3>
+<pre><code class="lang-js">const link = document.querySelector(&quot;.cta-link&quot;);
+link.setAttribute(&quot;href&quot;, &quot;#contact&quot;);</code></pre>
+<h3>Créer un élément</h3>
+<pre><code class="lang-js">const badge = document.createElement(&quot;span&quot;);
+badge.textContent = &quot;Nouveau&quot;;
+badge.classList.add(&quot;badge&quot;);
+
+document.body.appendChild(badge);</code></pre>
+                </article>
+                <article class="lesson" id="ch25">
+                    <h2>25. Événements JavaScript</h2>
+<p>Un événement est une action :</p>
+<ul class="checklist">
+<li>clic,</li>
+<li>scroll,</li>
+<li>saisie clavier,</li>
+<li>soumission de formulaire,</li>
+<li>chargement de page.</li>
+</ul>
+<h3>Clic</h3>
+<p>HTML :</p>
+<pre><code class="lang-html">&lt;button id=&quot;menu-button&quot;&gt;Menu&lt;/button&gt;</code></pre>
+<p>JS :</p>
+<pre><code class="lang-js">const button = document.querySelector(&quot;#menu-button&quot;);
+
+button.addEventListener(&quot;click&quot;, () =&gt; {
+  console.log(&quot;Bouton cliqué&quot;);
+});</code></pre>
+<h3>Input</h3>
+<pre><code class="lang-html">&lt;input id=&quot;name&quot; type=&quot;text&quot;&gt;
+&lt;p id=&quot;preview&quot;&gt;&lt;/p&gt;</code></pre>
+<pre><code class="lang-js">const input = document.querySelector(&quot;#name&quot;);
+const preview = document.querySelector(&quot;#preview&quot;);
+
+input.addEventListener(&quot;input&quot;, () =&gt; {
+  preview.textContent = input.value;
+});</code></pre>
+<h3>Formulaire</h3>
+<pre><code class="lang-js">const form = document.querySelector(&quot;.contact-form&quot;);
+
+form.addEventListener(&quot;submit&quot;, (event) =&gt; {
+  event.preventDefault();
+  console.log(&quot;Formulaire intercepté&quot;);
+});</code></pre>
+<p><code>event.preventDefault()</code> empêche le comportement par défaut.</p>
+                </article>
+                <article class="lesson" id="ch26">
+                    <h2>26. Menu mobile</h2>
+<h3>HTML</h3>
+<pre><code class="lang-html">&lt;header class=&quot;site-header&quot;&gt;
+  &lt;a class=&quot;logo&quot; href=&quot;#&quot;&gt;ChronoSite&lt;/a&gt;
+
+  &lt;button class=&quot;menu-toggle&quot; type=&quot;button&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;main-nav&quot;&gt;
+    Menu
+  &lt;/button&gt;
+
+  &lt;nav class=&quot;main-nav&quot; id=&quot;main-nav&quot;&gt;
+    &lt;a href=&quot;#services&quot;&gt;Services&lt;/a&gt;
+    &lt;a href=&quot;#pricing&quot;&gt;Tarifs&lt;/a&gt;
+    &lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+<h3>CSS</h3>
+<pre><code class="lang-css">.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+}
+
+.main-nav {
+  display: none;
+}
+
+.main-nav.is-open {
+  display: flex;
+  position: absolute;
+  top: 72px;
+  right: 24px;
+  left: 24px;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18);
+}
+
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    display: flex;
+    gap: 24px;
+  }
+}</code></pre>
+<h3>JavaScript</h3>
+<pre><code class="lang-js">const menuButton = document.querySelector(&quot;.menu-toggle&quot;);
+const nav = document.querySelector(&quot;#main-nav&quot;);
+
+menuButton.addEventListener(&quot;click&quot;, () =&gt; {
+  const isOpen = nav.classList.toggle(&quot;is-open&quot;);
+  menuButton.setAttribute(&quot;aria-expanded&quot;, isOpen);
+});</code></pre>
+<h3>Pourquoi <code>aria-expanded</code> ?</h3>
+<p>C’est utile pour l’accessibilité. Quand le menu est ouvert, la valeur passe à <code>true</code>.</p>
+<div class="demo pro-menu-demo"><h3 class="demo-title">Démo menu mobile</h3><div class="pro-site-header"><span class="pro-logo">ChronoSite</span><button type="button" class="btn btn-secondary" id="pro-menu-btn" aria-expanded="false" aria-controls="pro-main-nav">Menu</button><nav class="pro-main-nav" id="pro-main-nav"><a href="#s">Services</a><a href="#p">Tarifs</a><a href="#c">Contact</a></nav></div></div>
+                </article>
+                <article class="lesson" id="ch27">
+                    <h2>27. Formulaire interactif</h2>
+<h3>Objectif</h3>
+<p>Afficher un message si le formulaire est bien rempli.</p>
+<h3>HTML</h3>
+<pre><code class="lang-html">&lt;form class=&quot;contact-form&quot;&gt;
+  &lt;label for=&quot;name&quot;&gt;Nom&lt;/label&gt;
+  &lt;input id=&quot;name&quot; name=&quot;name&quot; type=&quot;text&quot; required&gt;
+
+  &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+  &lt;input id=&quot;email&quot; name=&quot;email&quot; type=&quot;email&quot; required&gt;
+
+  &lt;label for=&quot;message&quot;&gt;Message&lt;/label&gt;
+  &lt;textarea id=&quot;message&quot; name=&quot;message&quot; required&gt;&lt;/textarea&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Envoyer&lt;/button&gt;
+
+  &lt;p class=&quot;form-message&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+<h3>JavaScript</h3>
+<pre><code class="lang-js">const contactForm = document.querySelector(&quot;.contact-form&quot;);
+const formMessage = document.querySelector(&quot;.form-message&quot;);
+
+contactForm.addEventListener(&quot;submit&quot;, (event) =&gt; {
+  event.preventDefault();
+
+  const name = document.querySelector(&quot;#name&quot;).value.trim();
+  const email = document.querySelector(&quot;#email&quot;).value.trim();
+  const message = document.querySelector(&quot;#message&quot;).value.trim();
+
+  if (!name || !email || !message) {
+    formMessage.textContent = &quot;Merci de remplir tous les champs.&quot;;
+    formMessage.classList.add(&quot;error&quot;);
+    return;
+  }
+
+  formMessage.textContent = &quot;Merci, votre message est prêt à être envoyé.&quot;;
+  formMessage.classList.remove(&quot;error&quot;);
+
+  contactForm.reset();
+});</code></pre>
+<h3>CSS</h3>
+<pre><code class="lang-css">.form-message {
+  margin-top: 16px;
+  font-weight: 700;
+  color: #047857;
+}
+
+.form-message.error {
+  color: #dc2626;
+}</code></pre>
+<h3>Limite importante</h3>
+<p>Ce code ne remplace pas un vrai envoi serveur. Pour recevoir le mail, il faudra :</p>
+<ul class="checklist">
+<li>PHP,</li>
+<li>service externe,</li>
+<li>API,</li>
+<li>WordPress,</li>
+<li>formulaire Hostinger,</li>
+<li>Formspree,</li>
+<li>Netlify Forms,</li>
+<li>ou backend personnalisé.</li>
+</ul>
+<div class="demo"><h3 class="demo-title">Démo formulaire interactif</h3><form class="form pro-contact-form" id="pro-contact-form"><div class="form-row"><label for="pro-name">Nom</label><input id="pro-name" type="text" required></div><div class="form-row"><label for="pro-email">Email</label><input id="pro-email" type="email" required></div><div class="form-row"><label for="pro-msg">Message</label><textarea id="pro-msg" rows="3" required></textarea></div><button type="submit" class="btn btn-primary">Envoyer</button><p class="form-message demo-out" id="pro-form-msg" aria-live="polite"></p></form></div>
+                </article>
+                <article class="lesson" id="ch28">
+                    <h2>28. FAQ accordéon</h2>
+<h3>HTML</h3>
+<pre><code class="lang-html">&lt;section class=&quot;faq&quot;&gt;
+  &lt;h2&gt;Questions fréquentes&lt;/h2&gt;
+
+  &lt;div class=&quot;faq-item&quot;&gt;
+    &lt;button class=&quot;faq-question&quot; type=&quot;button&quot;&gt;
+      Combien de temps pour créer un site ?
+    &lt;/button&gt;
+    &lt;div class=&quot;faq-answer&quot;&gt;
+      &lt;p&gt;Un site simple peut être livré en quelques jours selon les contenus fournis.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;faq-item&quot;&gt;
+    &lt;button class=&quot;faq-question&quot; type=&quot;button&quot;&gt;
+      Le nom de domaine est-il inclus ?
+    &lt;/button&gt;
+    &lt;div class=&quot;faq-answer&quot;&gt;
+      &lt;p&gt;Oui, il peut être inclus selon la formule choisie.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<h3>CSS</h3>
+<pre><code class="lang-css">.faq-answer {
+  display: none;
+  padding: 0 0 16px;
+}
+
+.faq-item.is-open .faq-answer {
+  display: block;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 18px 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}</code></pre>
+<h3>JavaScript</h3>
+<pre><code class="lang-js">const questions = document.querySelectorAll(&quot;.faq-question&quot;);
+
+questions.forEach((question) =&gt; {
+  question.addEventListener(&quot;click&quot;, () =&gt; {
+    const item = question.closest(&quot;.faq-item&quot;);
+    item.classList.toggle(&quot;is-open&quot;);
+  });
+});</code></pre>
+<h3>Amélioration : fermer les autres réponses</h3>
+<pre><code class="lang-js">questions.forEach((question) =&gt; {
+  question.addEventListener(&quot;click&quot;, () =&gt; {
+    const currentItem = question.closest(&quot;.faq-item&quot;);
+
+    document.querySelectorAll(&quot;.faq-item&quot;).forEach((item) =&gt; {
+      if (item !== currentItem) {
+        item.classList.remove(&quot;is-open&quot;);
+      }
+    });
+
+    currentItem.classList.toggle(&quot;is-open&quot;);
+  });
+});</code></pre>
+<div class="demo"><h3 class="demo-title">Démo FAQ accordéon</h3><div class="pro-faq" id="pro-faq"><div class="pro-faq-item"><button type="button" class="pro-faq-q" aria-expanded="false">Combien de temps pour un site ?</button><div class="pro-faq-a" hidden>En général entre 5 et 15 jours selon la complexité.</div></div><div class="pro-faq-item"><button type="button" class="pro-faq-q" aria-expanded="false">Puis-je modifier mon site ensuite ?</button><div class="pro-faq-a" hidden>Oui, le code est livré proprement pour que tu puisses le faire évoluer.</div></div><div class="pro-faq-item"><button type="button" class="pro-faq-q" aria-expanded="false">Le site est-il responsive ?</button><div class="pro-faq-a" hidden>Oui, il est pensé mobile d’abord.</div></div></div></div>
+                </article>
+                <article class="lesson" id="ch29">
+                    <h2>29. Mode sombre</h2>
+<h3>HTML</h3>
+<pre><code class="lang-html">&lt;button class=&quot;theme-toggle&quot; type=&quot;button&quot;&gt;
+  Changer le thème
+&lt;/button&gt;</code></pre>
+<h3>CSS</h3>
+<pre><code class="lang-css">:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+}
+
+body.dark {
+  --bg: #020617;
+  --surface: #0f172a;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.card {
+  background: var(--surface);
+}</code></pre>
+<h3>JavaScript</h3>
+<pre><code class="lang-js">const themeButton = document.querySelector(&quot;.theme-toggle&quot;);
+
+themeButton.addEventListener(&quot;click&quot;, () =&gt; {
+  document.body.classList.toggle(&quot;dark&quot;);
+});</code></pre>
+<div class="demo"><h3 class="demo-title">Démo mode sombre (localStorage)</h3><button type="button" class="btn btn-primary" id="pro-dark-btn">Basculer clair / sombre</button><p class="demo-out" id="pro-dark-out"></p></div>
+                </article>
+                <article class="lesson" id="ch30">
+                    <h2>30. Sauvegarde avec localStorage</h2>
+<p><code>localStorage</code> permet de garder une information dans le navigateur.</p>
+<p>Exemple :</p>
+<ul class="checklist">
+<li>thème sombre,</li>
+<li>préférence utilisateur,</li>
+<li>dernière catégorie ouverte.</li>
+</ul>
+<h3>Sauvegarder le mode sombre</h3>
+<pre><code class="lang-js">const themeButton = document.querySelector(&quot;.theme-toggle&quot;);
+const savedTheme = localStorage.getItem(&quot;theme&quot;);
+
+if (savedTheme === &quot;dark&quot;) {
+  document.body.classList.add(&quot;dark&quot;);
+}
+
+themeButton.addEventListener(&quot;click&quot;, () =&gt; {
+  document.body.classList.toggle(&quot;dark&quot;);
+
+  if (document.body.classList.contains(&quot;dark&quot;)) {
+    localStorage.setItem(&quot;theme&quot;, &quot;dark&quot;);
+  } else {
+    localStorage.setItem(&quot;theme&quot;, &quot;light&quot;);
+  }
+});</code></pre>
+<h3>Attention</h3>
+<p>Ne stocke jamais de données sensibles dans <code>localStorage</code>.</p>
+<p>À éviter :</p>
+<ul class="checklist">
+<li>mots de passe,</li>
+<li>données bancaires,</li>
+<li>informations privées importantes.</li>
+</ul>
+<div class="demo"><h3 class="demo-title">Démo localStorage</h3><div class="demo-row"><input type="text" id="pro-ls-input" class="demo-input" placeholder="Ton prénom" aria-label="Prénom"><button type="button" class="btn btn-primary" id="pro-ls-save">Sauver</button><button type="button" class="btn btn-secondary" id="pro-ls-clear">Effacer</button></div><p class="demo-out" id="pro-ls-out" aria-live="polite"></p></div>
+                </article>
+                <article class="lesson" id="ch31">
+                    <h2>31. Fetch API : préparer un site dynamique</h2>
+<p><code>fetch()</code> permet de récupérer des données.</p>
+<h3>Exemple simple</h3>
+<pre><code class="lang-js">fetch(&quot;data/services.json&quot;)
+  .then((response) =&gt; response.json())
+  .then((data) =&gt; {
+    console.log(data);
+  });</code></pre>
+<h3>Version moderne avec async/await</h3>
+<pre><code class="lang-js">async function loadServices() {
+  const response = await fetch(&quot;data/services.json&quot;);
+  const services = await response.json();
+
+  console.log(services);
+}
+
+loadServices();</code></pre>
+<h3>Exemple de fichier JSON</h3>
+<pre><code class="lang-json">[
+  {
+    &quot;title&quot;: &quot;Site vitrine&quot;,
+    &quot;price&quot;: &quot;À partir de 490 €&quot;,
+    &quot;description&quot;: &quot;Un site professionnel pour présenter votre activité.&quot;
+  },
+  {
+    &quot;title&quot;: &quot;Landing page&quot;,
+    &quot;price&quot;: &quot;À partir de 290 €&quot;,
+    &quot;description&quot;: &quot;Une page optimisée pour vendre une offre précise.&quot;
+  }
+]</code></pre>
+<h3>Afficher les services dans la page</h3>
+<p>HTML :</p>
+<pre><code class="lang-html">&lt;div class=&quot;services-list&quot;&gt;&lt;/div&gt;</code></pre>
+<p>JS :</p>
+<pre><code class="lang-js">async function loadServices() {
+  const response = await fetch(&quot;data/services.json&quot;);
+  const services = await response.json();
+
+  const container = document.querySelector(&quot;.services-list&quot;);
+
+  services.forEach((service) =&gt; {
+    const card = document.createElement(&quot;article&quot;);
+    card.classList.add(&quot;card&quot;);
+
+    card.innerHTML = `
+      &lt;h3&gt;${service.title}&lt;/h3&gt;
+      &lt;p&gt;${service.description}&lt;/p&gt;
+      &lt;strong&gt;${service.price}&lt;/strong&gt;
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+loadServices();</code></pre>
+<h3>Attention sécurité</h3>
+<p>Ne mets pas directement du contenu utilisateur dans <code>innerHTML</code> si tu ne le contrôles pas. Pour du contenu venant d’un formulaire ou d’une source inconnue, préfère <code>textContent</code>.</p>
+<div class="demo"><h3 class="demo-title">Démo Fetch API</h3><button type="button" class="btn btn-primary" id="pro-fetch-btn">Charger une citation</button><p class="demo-out" id="pro-fetch-out" aria-live="polite"></p></div>
+                </article>
+                <article class="lesson" id="ch32">
+                    <h2>32. Problématiques JavaScript concrètes</h2>
+<h3>Problème 1 : mon JavaScript ne marche pas</h3>
+<h4>Cause fréquente</h4>
+<p>Le script s’exécute avant que le HTML existe.</p>
+<h4>Solution 1 : mettre <code>defer</code></h4>
+<pre><code class="lang-html">&lt;script src=&quot;assets/js/script.js&quot; defer&gt;&lt;/script&gt;</code></pre>
+<h4>Solution 2 : placer le script avant <code>&lt;/body&gt;</code></h4>
+<pre><code class="lang-html">&lt;script src=&quot;assets/js/script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<h3>Problème 2 : querySelector retourne null</h3>
+<h4>Exemple</h4>
+<pre><code class="lang-js">const button = document.querySelector(&quot;.menu-button&quot;);
+button.addEventListener(&quot;click&quot;, () =&gt; {});</code></pre>
+<p>Erreur possible :</p>
+<pre><code class="lang-txt">Cannot read properties of null</code></pre>
+<h4>Cause</h4>
+<p>L’élément <code>.menu-button</code> n’existe pas dans le HTML.</p>
+<h4>Correction défensive</h4>
+<pre><code class="lang-js">const button = document.querySelector(&quot;.menu-button&quot;);
+
+if (button) {
+  button.addEventListener(&quot;click&quot;, () =&gt; {
+    console.log(&quot;Menu ouvert&quot;);
+  });
+}</code></pre>
+<h3>Problème 3 : je veux ajouter une classe au scroll</h3>
+<pre><code class="lang-js">const header = document.querySelector(&quot;.site-header&quot;);
+
+window.addEventListener(&quot;scroll&quot;, () =&gt; {
+  if (window.scrollY &gt; 20) {
+    header.classList.add(&quot;is-scrolled&quot;);
+  } else {
+    header.classList.remove(&quot;is-scrolled&quot;);
+  }
+});</code></pre>
+<p>CSS :</p>
+<pre><code class="lang-css">.site-header.is-scrolled {
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+}</code></pre>
+<h3>Problème 4 : je veux filtrer un portfolio</h3>
+<p>HTML :</p>
+<pre><code class="lang-html">&lt;div class=&quot;filters&quot;&gt;
+  &lt;button data-filter=&quot;all&quot;&gt;Tous&lt;/button&gt;
+  &lt;button data-filter=&quot;site&quot;&gt;Sites&lt;/button&gt;
+  &lt;button data-filter=&quot;logo&quot;&gt;Logos&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;portfolio&quot;&gt;
+  &lt;article class=&quot;project&quot; data-category=&quot;site&quot;&gt;Projet site web&lt;/article&gt;
+  &lt;article class=&quot;project&quot; data-category=&quot;logo&quot;&gt;Projet logo&lt;/article&gt;
+&lt;/div&gt;</code></pre>
+<p>JS :</p>
+<pre><code class="lang-js">const filterButtons = document.querySelectorAll(&quot;[data-filter]&quot;);
+const projects = document.querySelectorAll(&quot;.project&quot;);
+
+filterButtons.forEach((button) =&gt; {
+  button.addEventListener(&quot;click&quot;, () =&gt; {
+    const filter = button.dataset.filter;
+
+    projects.forEach((project) =&gt; {
+      const category = project.dataset.category;
+
+      if (filter === &quot;all&quot; || filter === category) {
+        project.style.display = &quot;block&quot;;
+      } else {
+        project.style.display = &quot;none&quot;;
+      }
+    });
+  });
+});</code></pre>
+<h3>Problème 5 : je veux afficher un prix selon les options</h3>
+<p>HTML :</p>
+<pre><code class="lang-html">&lt;form class=&quot;price-form&quot;&gt;
+  &lt;label&gt;
+    &lt;input type=&quot;checkbox&quot; value=&quot;80&quot; class=&quot;option&quot;&gt;
+    Page supplémentaire
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    &lt;input type=&quot;checkbox&quot; value=&quot;120&quot; class=&quot;option&quot;&gt;
+    Formulaire avancé
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    &lt;input type=&quot;checkbox&quot; value=&quot;150&quot; class=&quot;option&quot;&gt;
+    Optimisation SEO
+  &lt;/label&gt;
+
+  &lt;p&gt;Total estimé : &lt;strong id=&quot;total-price&quot;&gt;490 €&lt;/strong&gt;&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+<p>JS :</p>
+<pre><code class="lang-js">const basePrice = 490;
+const options = document.querySelectorAll(&quot;.option&quot;);
+const totalPrice = document.querySelector(&quot;#total-price&quot;);
+
+function updateTotal() {
+  let total = basePrice;
+
+  options.forEach((option) =&gt; {
+    if (option.checked) {
+      total += Number(option.value);
+    }
+  });
+
+  totalPrice.textContent = `${total} €`;
+}
+
+options.forEach((option) =&gt; {
+  option.addEventListener(&quot;change&quot;, updateTotal);
+});</code></pre>
+                </article>
+                <div class="course-nav">
+                    <a href="cours-css-pro.html" class="btn btn-secondary">← CSS pro</a>
+                    <div class="course-nav-end">
+                        <a href="cours-projet.html" class="btn btn-primary">Partie 4 : Projet →</a>
+                    </div>
+                </div>
+                </div>
+                <footer class="dash-footer"><p>© 2026 LearnCode — JavaScript utile pour le web</p></footer>
+            </main>
+        </div>
+    </div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
+<script>
+(function () {
+  const themeBox = document.getElementById("pro-theme");
+  document.getElementById("pro-theme-btn")?.addEventListener("click", () => {
+    const next = themeBox.getAttribute("data-theme") === "light" ? "dark" : "light";
+    themeBox.setAttribute("data-theme", next);
+  });
+  const menuBtn = document.getElementById("pro-menu-btn");
+  const nav = document.getElementById("pro-main-nav");
+  menuBtn?.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    menuBtn.setAttribute("aria-expanded", String(open));
+  });
+  const form = document.getElementById("pro-contact-form");
+  const formMsg = document.getElementById("pro-form-msg");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("pro-name").value.trim();
+    const email = document.getElementById("pro-email").value.trim();
+    const msg = document.getElementById("pro-msg").value.trim();
+    if (!name || !email || !msg) {
+      formMsg.textContent = "Merci de remplir tous les champs.";
+      formMsg.classList.add("error");
+      return;
+    }
+    formMsg.textContent = "Merci " + name + ", ta demande est prête à être envoyée.";
+    formMsg.classList.remove("error");
+    form.reset();
+  });
+  document.querySelectorAll("#pro-faq .pro-faq-q").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".pro-faq-item");
+      const answer = item.querySelector(".pro-faq-a");
+      const open = btn.getAttribute("aria-expanded") === "true";
+      document.querySelectorAll("#pro-faq .pro-faq-q").forEach((b) => {
+        b.setAttribute("aria-expanded", "false");
+        b.closest(".pro-faq-item").querySelector(".pro-faq-a").hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute("aria-expanded", "true");
+        answer.hidden = false;
+      }
+    });
+  });
+  const darkBtn = document.getElementById("pro-dark-btn");
+  const darkOut = document.getElementById("pro-dark-out");
+  function refreshDark() {
+    const t = localStorage.getItem("pro-theme") || "light";
+    document.documentElement.dataset.proTheme = t;
+    if (darkOut) darkOut.textContent = "Thème actuel : " + t;
+  }
+  darkBtn?.addEventListener("click", () => {
+    const cur = localStorage.getItem("pro-theme") || "light";
+    localStorage.setItem("pro-theme", cur === "light" ? "dark" : "light");
+    refreshDark();
+  });
+  refreshDark();
+  const lsIn = document.getElementById("pro-ls-input");
+  const lsOut = document.getElementById("pro-ls-out");
+  function refreshLs() {
+    const v = localStorage.getItem("pro-name");
+    if (lsOut) lsOut.textContent = v ? "Valeur : " + v : "Aucune valeur.";
+    if (v && lsIn) lsIn.value = v;
+  }
+  document.getElementById("pro-ls-save")?.addEventListener("click", () => {
+    localStorage.setItem("pro-name", (lsIn.value || "Anonyme").trim());
+    refreshLs();
+  });
+  document.getElementById("pro-ls-clear")?.addEventListener("click", () => {
+    localStorage.removeItem("pro-name");
+    if (lsIn) lsIn.value = "";
+    refreshLs();
+  });
+  if (lsOut) refreshLs();
+  document.getElementById("pro-fetch-btn")?.addEventListener("click", async () => {
+    const out = document.getElementById("pro-fetch-out");
+    out.textContent = "chargement…";
+    try {
+      const res = await fetch("https://api.quotable.io/random");
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      out.textContent = "« " + data.content + " » — " + data.author;
+    } catch (err) {
+      out.textContent = "Échec fetch : " + err.message;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChronoSite — Démo landing (mini-projet)</title>
+  <meta name="description" content="Démo du mini-projet ChronoSite : landing page moderne avec menu mobile, FAQ et formulaire.">
+  <style>
+    :root {
+      --primary: #7c3aed;
+      --secondary: #2563eb;
+      --bg: #f8fafc;
+      --soft: #eef2f7;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 24px;
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
+
+    .course-banner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 20px;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+    }
+
+    .course-banner a {
+      color: #a5b4fc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .course-banner a:hover { text-decoration: underline; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: rgba(248, 250, 252, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+      transition: box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 1.25rem;
+      text-decoration: none;
+      letter-spacing: -0.04em;
+    }
+
+    .menu-toggle {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .main-nav { display: none; }
+
+    .main-nav.is-open {
+      position: absolute;
+      top: 72px;
+      left: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px;
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .main-nav a {
+      font-weight: 700;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .main-nav a:hover { color: var(--primary); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      gap: 48px;
+      min-height: 88vh;
+      padding: 80px 24px;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.22), transparent 34%),
+        radial-gradient(circle at 90% 20%, rgba(37, 99, 235, 0.18), transparent 32%),
+        linear-gradient(135deg, #f8fafc, #eef2ff);
+    }
+
+    .hero-content { align-self: center; max-width: 720px; }
+
+    .badge, .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 8px 14px;
+      border: 1px solid rgba(124, 58, 237, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.875rem;
+    }
+
+    .hero h1 {
+      margin: 24px 0;
+      max-width: 760px;
+      font-size: clamp(2.4rem, 7vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.125rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 12px 32px rgba(124, 58, 237, 0.35);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .hero-visual { display: flex; align-items: center; justify-content: center; }
+
+    .mockup-desktop {
+      width: min(100%, 420px);
+      border-radius: 18px;
+      background: #0f172a;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .mockup-bar {
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #334155, #1e293b);
+      margin-bottom: 14px;
+    }
+
+    .mockup-content {
+      background: linear-gradient(160deg, #1e1b4b, #0f172a 50%, #172554);
+      border-radius: 12px;
+      padding: 24px;
+      min-height: 220px;
+    }
+
+    .mockup-title {
+      height: 18px;
+      width: 55%;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #a78bfa, #60a5fa);
+      margin-bottom: 14px;
+    }
+
+    .mockup-line {
+      height: 10px;
+      width: 90%;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      margin-bottom: 8px;
+    }
+
+    .mockup-line.small { width: 65%; }
+
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .mockup-grid span {
+      height: 56px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .section { padding: 80px 24px; }
+
+    .section-soft { background: var(--soft); }
+
+    .container { width: min(1100px, 100%); margin: 0 auto; }
+
+    .section-heading { max-width: 640px; margin-bottom: 36px; }
+
+    .section-heading h2 {
+      margin: 12px 0 10px;
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading p { color: var(--muted); margin: 0; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .card h3 { margin: 0 0 10px; letter-spacing: -0.02em; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .price {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin: 0 0 8px !important;
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(124, 58, 237, 0.35);
+      box-shadow: 0 16px 48px rgba(124, 58, 237, 0.15);
+      background: linear-gradient(180deg, #fff, #f5f3ff);
+    }
+
+    .steps {
+      margin: 0;
+      padding-left: 1.25rem;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 18px 20px;
+      border: 0;
+      background: transparent;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 18px;
+      color: var(--muted);
+    }
+
+    .faq-item.is-open .faq-answer { display: block; }
+
+    .contact-grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 12px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form label { font-weight: 700; font-size: 0.9rem; }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font: inherit;
+      background: #fff;
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      outline: 3px solid rgba(124, 58, 237, 0.18);
+      border-color: var(--primary);
+    }
+
+    .form-message {
+      margin: 0;
+      font-weight: 800;
+      color: #047857;
+    }
+
+    .form-message.error { color: #dc2626; }
+
+    .site-footer {
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle { display: none; }
+
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        position: static;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .hero {
+        grid-template-columns: 1.05fr 0.95fr;
+        padding: 96px 48px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+        align-items: start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="course-banner">
+    <span>Démo du mini-projet · cours LearnCode</span>
+    <span>
+      <a href="cours-projet.html">← Retour au cours</a>
+      ·
+      <a href="cours-js-pro.html">JS pro</a>
+    </span>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="#">ChronoSite</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav class="main-nav" id="main-nav">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Tarifs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="badge">Création de sites web · Parempuyre &amp; Bordeaux Métropole</p>
+        <h1>Votre site web <span>professionnel</span> livré rapidement.</h1>
+        <p class="hero-text">
+          Je crée des sites modernes, rapides et abordables pour les indépendants,
+          associations et petites entreprises qui veulent être visibles sans exploser leur budget.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Obtenir mon devis</a>
+          <a class="btn btn-secondary" href="#pricing">Voir les formules</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mockup mockup-desktop">
+          <div class="mockup-bar"></div>
+          <div class="mockup-content">
+            <div class="mockup-title"></div>
+            <div class="mockup-line"></div>
+            <div class="mockup-line small"></div>
+            <div class="mockup-grid"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Services</p>
+          <h2>Ce que je peux créer pour toi</h2>
+          <p>Des solutions simples, propres et efficaces pour lancer ou améliorer ta présence en ligne.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Site vitrine</h3>
+            <p>Présente ton activité, tes services, tes photos, tes horaires et tes contacts.</p>
+          </article>
+          <article class="card">
+            <h3>Landing page</h3>
+            <p>Une page claire pour vendre une offre précise ou générer des demandes de devis.</p>
+          </article>
+          <article class="card">
+            <h3>Maintenance</h3>
+            <p>Correction, sauvegarde, sécurité, mises à jour et petites améliorations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="process">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Méthode</p>
+          <h2>Un process simple</h2>
+        </div>
+        <ol class="steps">
+          <li>Tu choisis une ambiance ou un modèle.</li>
+          <li>Tu m’envoies tes textes, photos et informations.</li>
+          <li>Je crée une première version temporaire.</li>
+          <li>Tu valides ou demandes des retouches.</li>
+          <li>Le site est mis en ligne avec le nom de domaine.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Formules</p>
+          <h2>Choisis la formule adaptée</h2>
+        </div>
+        <div class="cards">
+          <article class="card pricing-card">
+            <h3>Essentiel</h3>
+            <p class="price">À partir de 290 €</p>
+            <p>Une page professionnelle pour présenter une offre simple.</p>
+          </article>
+          <article class="card pricing-card featured">
+            <h3>Site vitrine</h3>
+            <p class="price">À partir de 490 €</p>
+            <p>Un site complet avec plusieurs sections et formulaire de contact.</p>
+          </article>
+          <article class="card pricing-card">
+            <h3>Abonnement</h3>
+            <p class="price">Dès 39 €/mois</p>
+            <p>Site hébergé, maintenance incluse et accompagnement régulier.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2>Questions fréquentes</h2>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Combien de temps pour créer un site ?</button>
+          <div class="faq-answer">
+            <p>Un site simple peut être livré en quelques jours si les contenus sont prêts.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Est-ce que le site est responsive ?</button>
+          <div class="faq-answer">
+            <p>Oui, le site est pensé pour ordinateur, tablette et mobile.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Puis-je demander des retouches ?</button>
+          <div class="faq-answer">
+            <p>Oui, les retouches peuvent être incluses ou facturées selon la formule.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Parle-moi de ton projet</h2>
+          <p>Explique ton besoin, ton activité, ton délai et ton budget approximatif.</p>
+        </div>
+        <form class="contact-form">
+          <label for="name">Nom</label>
+          <input id="name" name="name" type="text" required>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+          <label for="project">Type de projet</label>
+          <select id="project" name="project" required>
+            <option value="">Choisir une option</option>
+            <option value="site-vitrine">Site vitrine</option>
+            <option value="landing-page">Landing page</option>
+            <option value="maintenance">Maintenance</option>
+          </select>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+          <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+          <p class="form-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 ChronoSite · Démo LearnCode</p>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("#main-nav");
+
+    if (menuButton && nav) {
+      menuButton.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      });
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("is-open");
+          menuButton.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    document.querySelectorAll(".faq-question").forEach((question) => {
+      question.addEventListener("click", () => {
+        const currentItem = question.closest(".faq-item");
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          if (item !== currentItem) item.classList.remove("is-open");
+        });
+        currentItem.classList.toggle("is-open");
+      });
+    });
+
+    const contactForm = document.querySelector(".contact-form");
+    const formMessage = document.querySelector(".form-message");
+
+    if (contactForm && formMessage) {
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = document.querySelector("#name").value.trim();
+        const email = document.querySelector("#email").value.trim();
+        const project = document.querySelector("#project").value.trim();
+        const message = document.querySelector("#message").value.trim();
+        if (!name || !email || !project || !message) {
+          formMessage.textContent = "Merci de remplir tous les champs.";
+          formMessage.classList.add("error");
+          return;
+        }
+        formMessage.textContent = "Merci, ta demande est prête à être envoyée.";
+        formMessage.classList.remove("error");
+        contactForm.reset();
+      });
+    }
+
+    const header = document.querySelector(".site-header");
+    if (header) {
+      window.addEventListener("scroll", () => {
+        header.classList.toggle("is-scrolled", window.scrollY > 20);
+      });
+    }
+  </script>
+</body>
+</html>

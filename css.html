@@ -92,6 +92,8 @@
             <a href="#l5" class="sidebar-link sidebar-link-sub">Box model</a>
             <a href="#l6" class="sidebar-link sidebar-link-sub">Flexbox</a>
             <a href="#l7" class="sidebar-link sidebar-link-sub">Propriétés à retenir</a>
+            <a href="#l8" class="sidebar-link sidebar-link-sub">Breakpoints</a>
+            <a href="#l9" class="sidebar-link sidebar-link-sub">Display</a>
         </nav>
 
         <div class="sidebar-footer">
@@ -123,17 +125,35 @@
                 </section>
 
                 <div class="course dash-course">
-<article class="lesson" id="l1">
+                <article class="lesson" id="l1">
                     <h2>1. Qu’est-ce que CSS ?</h2>
                     <p>
                         Le CSS s’applique aux éléments HTML. Une règle a un
                         <strong>sélecteur</strong>, puis des <strong>propriétés</strong>.
+                    </p>
+                    <p>
+                        En pratique, le HTML décrit le contenu et le CSS décide comment
+                        ce contenu doit apparaître à l’écran. Par exemple, le HTML dit
+                        “ceci est un titre”, et le CSS dit “ce titre est grand, bleu et
+                        espacé du paragraphe suivant”.
                     </p>
                     <pre><code>/* sélecteur { propriété: valeur; } */
 p {
     color: blue;
     font-size: 18px;
 }</code></pre>
+                    <h3>Explication ligne par ligne</h3>
+                    <ul class="checklist">
+                        <li><code>p</code> sélectionne tous les paragraphes de la page.</li>
+                        <li><code>{</code> ouvre le bloc de styles appliqué aux paragraphes.</li>
+                        <li><code>color: blue;</code> met la couleur du texte en bleu.</li>
+                        <li><code>font-size: 18px;</code> règle la taille du texte à 18 pixels.</li>
+                        <li><code>}</code> ferme le bloc de styles.</li>
+                    </ul>
+                    <div class="note">
+                        Lecture de la règle : “pour tous les paragraphes <code>p</code>,
+                        mets le texte en bleu et donne-lui une taille de 18 pixels”.
+                    </div>
                 </article>
 
                 <article class="lesson" id="l2">
@@ -141,14 +161,31 @@ p {
                     <p>La méthode recommandée : un fichier externe.</p>
                     <pre><code>&lt;!-- Dans le &lt;head&gt; du HTML --&gt;
 &lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+                    <p>
+                        Cette ligne indique au navigateur : “charge aussi le fichier
+                        <code>styles.css</code> pour savoir comment afficher la page”.
+                        Si le fichier est dans un dossier, il faut écrire le bon chemin :
+                    </p>
+                    <pre><code>&lt;link rel="stylesheet" href="css/styles.css"&gt;
+&lt;link rel="stylesheet" href="assets/css/main.css"&gt;</code></pre>
                     <p>Ou en CSS interne :</p>
                     <pre><code>&lt;style&gt;
     h1 { color: red; }
 &lt;/style&gt;</code></pre>
+                    <div class="note">
+                        Pour un site complet, garde le CSS dans un fichier externe :
+                        c’est plus lisible, plus facile à corriger et réutilisable sur
+                        plusieurs pages.
+                    </div>
                 </article>
 
                 <article class="lesson" id="l3">
                     <h2>3. Sélecteurs essentiels</h2>
+                    <p>
+                        Un sélecteur sert à choisir précisément ce que tu veux styliser.
+                        Le plus important est de savoir quand utiliser une balise, une
+                        classe ou un ID.
+                    </p>
                     <pre><code>/* Balise */
 h1 { color: black; }
 
@@ -160,6 +197,50 @@ h1 { color: black; }
 
 /* Combinaison */
 .card p { color: #666; }</code></pre>
+                    <h3>Explication ligne par ligne</h3>
+                    <ul class="checklist">
+                        <li><code>/* Balise */</code> est un commentaire : il sert à expliquer le code, le navigateur l’ignore.</li>
+                        <li><code>h1 { color: black; }</code> cible tous les titres <code>h1</code> et met leur texte en noir.</li>
+                        <li><code>/* Classe (réutilisable) */</code> annonce l’exemple avec une classe.</li>
+                        <li><code>.titre { font-size: 24px; }</code> cible les éléments avec <code>class="titre"</code> et met leur texte à 24 px.</li>
+                        <li><code>/* ID (unique) */</code> annonce l’exemple avec un identifiant unique.</li>
+                        <li><code>#logo { width: 100px; }</code> cible l’élément avec <code>id="logo"</code> et lui donne une largeur de 100 px.</li>
+                        <li><code>/* Combinaison */</code> annonce un sélecteur qui combine plusieurs informations.</li>
+                        <li><code>.card p { color: #666; }</code> cible seulement les paragraphes qui se trouvent dans un élément <code>.card</code>.</li>
+                    </ul>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Sélecteur</th>
+                                    <th>Quand l’utiliser</th>
+                                    <th>Exemple concret</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>h1</code></td>
+                                    <td>Pour tous les titres principaux</td>
+                                    <td>Uniformiser la taille des titres de page</td>
+                                </tr>
+                                <tr>
+                                    <td><code>.btn</code></td>
+                                    <td>Pour un style réutilisable</td>
+                                    <td>Styliser plusieurs boutons du site</td>
+                                </tr>
+                                <tr>
+                                    <td><code>#contact</code></td>
+                                    <td>Pour une zone unique</td>
+                                    <td>Créer un lien vers la section contact</td>
+                                </tr>
+                                <tr>
+                                    <td><code>.card p</code></td>
+                                    <td>Pour cibler un élément dans un bloc</td>
+                                    <td>Changer seulement les paragraphes des cartes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="demo">
                         <h3 class="demo-title">Classes en action</h3>
                         <p class="css-demo-muted">Texte grisé avec une classe</p>
@@ -169,6 +250,11 @@ h1 { color: black; }
 
                 <article class="lesson" id="l4">
                     <h2>4. Couleurs et textes</h2>
+                    <p>
+                        La lisibilité vient surtout de trois choix : une couleur de texte
+                        assez contrastée, une taille confortable et une hauteur de ligne
+                        suffisante.
+                    </p>
                     <pre><code>body {
     color: #1a1a1a;          /* texte */
     background-color: #fff;  /* fond */
@@ -181,11 +267,48 @@ h1 { color: black; }
     font-weight: bold;
     text-align: center;
 }</code></pre>
+                    <h3>Exemple concret : carte de présentation</h3>
+                    <pre><code>.profil-card {
+    background: #ffffff;
+    color: #0f172a;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.profil-card .role {
+    color: #64748b;
+    font-size: 14px;
+}</code></pre>
+                    <h3>Explication ligne par ligne</h3>
+                    <ul class="checklist">
+                        <li><code>.profil-card</code> cible la carte de présentation.</li>
+                        <li><code>background: #ffffff</code> donne un fond blanc à la carte.</li>
+                        <li><code>color: #0f172a</code> définit une couleur de texte sombre et lisible.</li>
+                        <li><code>font-family</code> choisit la police utilisée dans la carte.</li>
+                        <li><code>line-height: 1.6</code> augmente l’espace entre les lignes pour améliorer la lecture.</li>
+                        <li><code>.profil-card .role</code> cible seulement l’élément <code>role</code> placé dans la carte.</li>
+                        <li><code>color: #64748b</code> rend le rôle plus discret que le nom.</li>
+                        <li><code>font-size: 14px</code> réduit légèrement la taille du rôle.</li>
+                    </ul>
+                    <div class="demo">
+                        <h3 class="demo-title">Typographie lisible</h3>
+                        <article class="css-profile-demo">
+                            <strong>Sarah Martin</strong>
+                            <span>Développeuse front-end</span>
+                            <p>Une carte simple avec un titre visible, un sous-texte discret et un paragraphe facile à lire.</p>
+                        </article>
+                    </div>
                 </article>
 
                 <article class="lesson" id="l5">
                     <h2>5. Box model (le modèle de boîte)</h2>
                     <p>Chaque élément est une boîte avec contenu, padding, bordure et marge.</p>
+                    <ul class="checklist">
+                        <li><code>content</code> : le texte ou l’image à l’intérieur.</li>
+                        <li><code>padding</code> : l’espace entre le contenu et la bordure.</li>
+                        <li><code>border</code> : le contour de la boîte.</li>
+                        <li><code>margin</code> : l’espace entre cette boîte et les autres éléments.</li>
+                    </ul>
                     <pre><code>.boite {
     width: 300px;
     padding: 20px;        /* intérieur */
@@ -194,9 +317,24 @@ h1 { color: black; }
     border-radius: 8px;
     box-sizing: border-box;
 }</code></pre>
+                    <h3>Explication ligne par ligne</h3>
+                    <ul class="checklist">
+                        <li><code>.boite</code> cible tous les éléments qui ont la classe <code>boite</code>.</li>
+                        <li><code>width: 300px</code> donne une largeur de base de 300 pixels.</li>
+                        <li><code>padding: 20px</code> ajoute de l’espace à l’intérieur de la boîte.</li>
+                        <li><code>border: 2px solid #2563eb</code> ajoute une bordure bleue de 2 pixels.</li>
+                        <li><code>margin: 16px</code> ajoute de l’espace autour de la boîte.</li>
+                        <li><code>border-radius: 8px</code> arrondit légèrement les coins.</li>
+                        <li><code>box-sizing: border-box</code> inclut le padding et la bordure dans la largeur totale.</li>
+                    </ul>
                     <div class="demo">
                         <h3 class="demo-title">Exemple de boîte</h3>
                         <div class="box-demo">Je suis une boîte CSS</div>
+                    </div>
+                    <div class="note">
+                        Conseil pratique : ajoute souvent <code>box-sizing: border-box</code>.
+                        Ainsi, une boîte de 300 px reste à 300 px même avec du padding
+                        et une bordure.
                     </div>
                 </article>
 
@@ -209,6 +347,14 @@ h1 { color: black; }
     align-items: center;            /* vertical */
     gap: 16px;
 }</code></pre>
+                    <h3>Explication ligne par ligne</h3>
+                    <ul class="checklist">
+                        <li><code>.row</code> cible un conteneur qui doit aligner plusieurs éléments.</li>
+                        <li><code>display: flex</code> place les enfants sur un axe flexible.</li>
+                        <li><code>justify-content: space-between</code> pousse les éléments aux extrémités avec de l’espace entre eux.</li>
+                        <li><code>align-items: center</code> centre les éléments verticalement.</li>
+                        <li><code>gap: 16px</code> garde toujours 16 px entre les éléments.</li>
+                    </ul>
                     <div class="demo">
                         <h3 class="demo-title">Flex en direct</h3>
                         <div class="flex-demo">
@@ -217,6 +363,17 @@ h1 { color: black; }
                             <span>C</span>
                         </div>
                     </div>
+                    <h3>Exemple concret : menu de navigation</h3>
+                    <pre><code>.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}</code></pre>
+                    <p>
+                        Ici, le logo peut rester à gauche, les liens à droite, et
+                        <code>gap</code> garde un espace propre entre les éléments.
+                    </p>
                 </article>
 
                 <article class="lesson" id="l7">
@@ -239,6 +396,147 @@ h1 { color: black; }
                                 <tr><td><code>@media</code></td><td>Responsive (mobile)</td></tr>
                             </tbody>
                         </table>
+                    </div>
+                </article>
+
+                <article class="lesson" id="l8">
+                    <h2>8. Breakpoints et responsive</h2>
+                    <p>
+                        Un <strong>breakpoint</strong> est une largeur d’écran à partir de
+                        laquelle tu changes la mise en page. Par exemple, un site peut
+                        afficher une seule colonne sur téléphone, puis deux colonnes à
+                        partir de 768 px.
+                    </p>
+                    <p>
+                        En CSS, on écrit un breakpoint avec <code>@media</code>. Le code
+                        placé dans le bloc ne s’applique que si la condition est vraie.
+                    </p>
+                    <pre><code>.cards {
+    display: grid;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}</code></pre>
+                    <h3>Explication ligne par ligne</h3>
+                    <ul class="checklist">
+                        <li><code>.cards {</code> ouvre une règle pour le bloc qui contient les cartes.</li>
+                        <li><code>display: grid;</code> active CSS Grid pour organiser les cartes.</li>
+                        <li><code>gap: 16px;</code> ajoute un espace régulier entre les cartes.</li>
+                        <li><code>}</code> ferme le style mobile de base.</li>
+                        <li><code>@media (min-width: 768px) {</code> ouvre un breakpoint qui s’active à partir de 768 px.</li>
+                        <li><code>.cards {</code> rouvre une règle pour les cartes, mais seulement dans ce breakpoint.</li>
+                        <li><code>grid-template-columns: repeat(2, 1fr);</code> crée deux colonnes de largeur égale.</li>
+                        <li><code>}</code> ferme la règle <code>.cards</code> du breakpoint.</li>
+                        <li><code>}</code> ferme le bloc <code>@media</code>.</li>
+                    </ul>
+                    <div class="note">
+                        Méthode conseillée : commence par le mobile sans media query, puis
+                        ajoute des breakpoints pour tablette et ordinateur. C’est ce qu’on
+                        appelle le mobile first.
+                    </div>
+                </article>
+
+                <article class="lesson" id="l9">
+                    <h2>9. Comprendre <code>display</code> avec une démo</h2>
+                    <p>
+                        La propriété <code>display</code> décide comment un élément se
+                        comporte dans la page : est-ce qu’il prend toute la ligne, est-ce
+                        qu’il reste dans le texte, est-ce qu’il organise ses enfants en
+                        ligne ou en grille ?
+                    </p>
+                    <pre><code>.demo-block {
+    display: block;
+}
+
+.demo-inline {
+    display: inline;
+}
+
+.demo-inline-block {
+    display: inline-block;
+}
+
+.demo-flex {
+    display: flex;
+}
+
+.demo-grid {
+    display: grid;
+}
+
+.demo-flexbox {
+    display: flexbox; /* incorrect */
+}</code></pre>
+                    <h3>Explication ligne par ligne</h3>
+                    <ul class="checklist">
+                        <li><code>.demo-block {</code> ouvre une règle pour l’exemple block.</li>
+                        <li><code>display: block;</code> force l’élément à prendre toute la largeur disponible.</li>
+                        <li><code>}</code> ferme la règle <code>.demo-block</code>.</li>
+                        <li><code>.demo-inline {</code> ouvre une règle pour l’exemple inline.</li>
+                        <li><code>display: inline;</code> garde l’élément dans le flux du texte, sans largeur ni hauteur contrôlables normalement.</li>
+                        <li><code>}</code> ferme la règle <code>.demo-inline</code>.</li>
+                        <li><code>.demo-inline-block {</code> ouvre une règle pour l’exemple inline-block.</li>
+                        <li><code>display: inline-block;</code> garde l’élément sur la ligne, mais permet d’utiliser padding, width et height.</li>
+                        <li><code>}</code> ferme la règle <code>.demo-inline-block</code>.</li>
+                        <li><code>.demo-flex {</code> ouvre une règle pour l’exemple Flexbox.</li>
+                        <li><code>display: flex;</code> active Flexbox pour aligner les enfants sur un axe.</li>
+                        <li><code>}</code> ferme la règle <code>.demo-flex</code>.</li>
+                        <li><code>.demo-grid {</code> ouvre une règle pour l’exemple Grid.</li>
+                        <li><code>display: grid;</code> active CSS Grid pour organiser les enfants en lignes et colonnes.</li>
+                        <li><code>}</code> ferme la règle <code>.demo-grid</code>.</li>
+                        <li><code>.demo-flexbox {</code> ouvre une règle qui montre une erreur fréquente.</li>
+                        <li><code>display: flexbox;</code> est incorrect : cette valeur n’existe pas en CSS moderne.</li>
+                        <li><code>}</code> ferme la règle <code>.demo-flexbox</code>.</li>
+                    </ul>
+                    <div class="note">
+                        Attention : on dit souvent “Flexbox” pour parler du système de
+                        mise en page, mais la ligne CSS correcte est <code>display: flex</code>,
+                        pas <code>display: flexbox</code>.
+                    </div>
+                    <div class="demo">
+                        <h3 class="demo-title">Démo display</h3>
+                        <div class="display-lab">
+                            <section class="display-case">
+                                <h4>display: block</h4>
+                                <span class="display-sample display-block">Bloc 1</span>
+                                <span class="display-sample display-block">Bloc 2</span>
+                            </section>
+                            <section class="display-case">
+                                <h4>display: inline</h4>
+                                <span class="display-sample display-inline">Inline 1</span>
+                                <span class="display-sample display-inline">Inline 2</span>
+                            </section>
+                            <section class="display-case">
+                                <h4>display: inline-block</h4>
+                                <span class="display-sample display-inline-block">Inline-block 1</span>
+                                <span class="display-sample display-inline-block">Inline-block 2</span>
+                            </section>
+                            <section class="display-case">
+                                <h4>display: flex</h4>
+                                <div class="display-flex">
+                                    <span>A</span>
+                                    <span>B</span>
+                                    <span>C</span>
+                                </div>
+                            </section>
+                            <section class="display-case">
+                                <h4>display: grid</h4>
+                                <div class="display-grid">
+                                    <span>1</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                </div>
+                            </section>
+                            <section class="display-case display-case-error">
+                                <h4>display: flexbox</h4>
+                                <p>Valeur incorrecte : le navigateur ignore cette déclaration.</p>
+                            </section>
+                        </div>
                     </div>
                 </article>
 

@@ -126,11 +126,17 @@
                 </section>
 
                 <div class="course dash-course">
-<article class="lesson" id="grid">
+                <article class="lesson" id="grid">
                     <h2>1. CSS Grid avancé</h2>
                     <p>
                         Grid permet des mises en page complexes en 2 dimensions :
                         lignes, colonnes, zones nommées et placement explicite.
+                    </p>
+                    <p>
+                        Utilise Grid quand tu dois contrôler une structure complète :
+                        dashboard, galerie, page avec sidebar, ou grille de cartes. Les
+                        zones nommées rendent le code plus lisible car le CSS décrit la
+                        forme de la page.
                     </p>
                     <pre><code>.layout {
   display: grid;
@@ -156,6 +162,35 @@
                             <div class="adv-grid-side">side</div>
                             <div class="adv-grid-footer">footer</div>
                         </div>
+                    </div>
+                    <h3>Adapter cette grille sur mobile</h3>
+                    <pre><code>@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "side"
+      "footer";
+  }
+}</code></pre>
+                    <p>
+                        Le HTML ne change pas. Seule la carte des zones change, ce qui
+                        rend le responsive plus simple à maintenir.
+                    </p>
+                    <h3>Explication du breakpoint</h3>
+                    <ul class="checklist">
+                        <li><code>@media (max-width: 720px)</code> signifie “applique ce code jusqu’à 720 px de large”.</li>
+                        <li><code>.layout</code> cible la grille principale déjà créée plus haut.</li>
+                        <li><code>grid-template-columns: 1fr</code> remplace les trois colonnes par une seule colonne.</li>
+                        <li><code>grid-template-areas</code> redessine l’ordre des zones pour un écran étroit.</li>
+                        <li>Chaque ligne entre guillemets représente une rangée de la grille mobile.</li>
+                    </ul>
+                    <div class="note">
+                        En avancé, tu peux mélanger <code>min-width</code> et <code>max-width</code>,
+                        mais choisis une logique principale pour le projet. Le plus courant
+                        reste : base mobile, puis améliorations avec <code>min-width</code>.
                     </div>
                 </article>
 
@@ -226,6 +261,12 @@
     grid-template-columns: 80px 1fr;
   }
 }</code></pre>
+                    <p>
+                        Exemple concret : une même carte produit peut être affichée dans
+                        une sidebar étroite ou dans une grille large. Avec une media query,
+                        tu testes la largeur de l’écran. Avec une container query, tu testes
+                        la largeur réelle de la carte.
+                    </p>
                     <div class="demo">
                         <h3 class="demo-title">Démo — redimensionne le conteneur</h3>
                         <p class="demo-hint">Tire le coin bas-droit du cadre :</p>
@@ -247,6 +288,10 @@
                         Les layers contrôlent la priorité des styles indépendamment de
                         l’ordre et de la spécificité classique.
                     </p>
+                    <p>
+                        C’est utile quand un projet mélange plusieurs sources CSS :
+                        reset, framework, composants maison et classes utilitaires.
+                    </p>
                     <pre><code>@layer reset, base, components, utilities;
 
 @layer base {
@@ -262,6 +307,22 @@
                         <li>L’ordre de déclaration des layers définit la priorité</li>
                         <li>Idéal pour séparer reset / composants / utilitaires</li>
                     </ul>
+                    <h3>Organisation conseillée</h3>
+                    <pre><code>@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+}
+
+@layer base {
+  body { font-family: system-ui, sans-serif; }
+}
+
+@layer components {
+  .card { padding: 1rem; border: 1px solid #e5e7eb; }
+}
+
+@layer utilities {
+  .text-center { text-align: center; }
+}</code></pre>
                 </article>
 
                 <article class="lesson" id="anim">
@@ -330,6 +391,22 @@ CSS.paintWorklet.addModule("checkerboard.js");
   padding: max(1rem, 2vw);
   width: calc(100% - 2rem);
 }</code></pre>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fonction</th>
+                                    <th>Utilisation concrète</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>clamp()</code></td><td>Un titre fluide avec une taille minimum et maximum</td></tr>
+                                <tr><td><code>min()</code></td><td>Une largeur qui ne dépasse jamais l’écran</td></tr>
+                                <tr><td><code>max()</code></td><td>Un padding qui garde une taille minimale confortable</td></tr>
+                                <tr><td><code>calc()</code></td><td>Une largeur calculée en retirant une marge fixe</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="demo">
                         <h3 class="demo-title">Démo — clamp() sur la taille du texte</h3>
                         <p class="clamp-demo">
@@ -394,6 +471,20 @@ CSS.paintWorklet.addModule("checkerboard.js");
 
 /* Exclure */
 button:not(:disabled) { cursor: pointer; }</code></pre>
+                    <h3>Exemple concret : carte interactive sans JavaScript</h3>
+                    <pre><code>.pricing-card:has(input:checked) {
+  border-color: #4f46e5;
+  box-shadow: 0 16px 40px rgba(79, 70, 229, 0.18);
+}
+
+.pricing-card:not(:has(input:checked)) {
+  opacity: 0.75;
+}</code></pre>
+                    <p>
+                        Ici, le parent change de style quand sa case interne est cochée.
+                        C’est pratique pour des formulaires, filtres, cartes de prix ou
+                        listes sélectionnables.
+                    </p>
                     <div class="demo">
                         <h3 class="demo-title">Démo — :has()</h3>
                         <label class="has-field">

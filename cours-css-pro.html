@@ -103,6 +103,7 @@
                 </article>
                 <article class="lesson" id="ch10">
                     <h2>10. Les sélecteurs CSS</h2>
+<p>Un bon CSS commence par de bons sélecteurs. L’objectif n’est pas seulement de “faire marcher” le style, mais de pouvoir le modifier plus tard sans casser toute la page.</p>
 <h3>Sélecteur de balise</h3>
 <pre><code class="lang-css">h1 {
   color: #111827;
@@ -139,6 +140,22 @@
 <pre><code class="lang-css">input:focus {
   outline: 2px solid #7c3aed;
 }</code></pre>
+<h3>Spécificité : pourquoi une règle gagne</h3>
+<p>Quand deux règles ciblent le même élément, le navigateur choisit la plus spécifique. Un ID gagne souvent contre une classe, et une classe gagne souvent contre une balise.</p>
+<pre><code class="lang-css">p {
+  color: gray;
+}
+
+.intro {
+  color: blue; /* gagne contre p */
+}
+
+#lead {
+  color: red; /* gagne contre .intro */
+}</code></pre>
+<p>HTML :</p>
+<pre><code class="lang-html">&lt;p id=&quot;lead&quot; class=&quot;intro&quot;&gt;Ce texte sera rouge.&lt;/p&gt;</code></pre>
+<div class="note">Dans un projet pro, évite de styliser avec des ID. Les classes sont plus souples et plus faciles à réutiliser.</div>
 <h3>Pseudo-éléments</h3>
 <pre><code class="lang-css">.hero-title::after {
   content: &quot;&quot;;
@@ -192,6 +209,26 @@ h3 {
 <li>sinon largeur de l’écran moins 48 px,</li>
 <li>centré automatiquement.</li>
 </ul>
+<h3>Exemple concret : créer une section propre</h3>
+<p>Voici une base réutilisable pour toutes les grandes sections d’un site.</p>
+<pre><code class="lang-css">.section {
+  padding: 80px 24px;
+}
+
+.container {
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.section-title {
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+
+.section-title p {
+  color: var(--color-muted);
+}</code></pre>
+<div class="demo"><h3 class="demo-title">Démo section</h3><div class="pro-section-demo"><h4>Services web</h4><p>Un titre court, un paragraphe limité en largeur et assez d’espace autour du bloc rendent la lecture plus professionnelle.</p></div></div>
                 </article>
                 <article class="lesson" id="ch12">
                     <h2>12. Box model : margin, padding, border</h2>
@@ -255,6 +292,18 @@ h3 {
   display: inline-block;
   padding: 6px 12px;
 }</code></pre>
+<h3>Exemple concret : lien transformé en bouton</h3>
+<p>Un lien est inline par défaut. Si tu ajoutes seulement du padding, le résultat peut être difficile à contrôler. Avec <code>inline-flex</code> ou <code>inline-block</code>, le lien devient un vrai bouton visuel.</p>
+<pre><code class="lang-css">.cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #111827;
+  color: white;
+}</code></pre>
+<div class="demo"><h3 class="demo-title">Display en pratique</h3><div class="display-demo"><span>inline</span><span class="inline-block">inline-block</span><span class="inline-flex">inline-flex</span></div></div>
                 </article>
                 <article class="lesson" id="ch14">
                     <h2>14. Flexbox</h2>
@@ -277,6 +326,14 @@ h3 {
   justify-content: space-between;
   padding: 20px 24px;
 }</code></pre>
+<h3>Explication ligne par ligne</h3>
+<ul class="checklist">
+<li><code>.site-header</code> cible l’en-tête complet du site.</li>
+<li><code>display: flex</code> place le logo et la navigation sur la même ligne.</li>
+<li><code>align-items: center</code> centre verticalement le logo et les liens.</li>
+<li><code>justify-content: space-between</code> met le logo à gauche et le menu à droite.</li>
+<li><code>padding: 20px 24px</code> ajoute de l’espace intérieur dans le header : 20 px en haut/bas, 24 px à gauche/droite.</li>
+</ul>
 <h3>Propriétés principales Flexbox</h3>
 <div class="table-wrap"><table>
 <thead><tr><th>Propriété</th><th>Rôle</th></tr></thead>
@@ -337,6 +394,15 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }</code></pre>
+<h3>Explication ligne par ligne</h3>
+<ul class="checklist">
+<li><code>.services</code> cible la section qui contient les cartes de services.</li>
+<li><code>display: grid</code> active CSS Grid sur ce conteneur.</li>
+<li><code>grid-template-columns: repeat(3, 1fr)</code> crée 3 colonnes identiques.</li>
+<li><code>repeat(3, ...)</code> évite d’écrire trois fois la même valeur.</li>
+<li><code>1fr</code> signifie “une fraction de l’espace disponible”. Ici, chaque colonne prend un tiers.</li>
+<li><code>gap: 24px</code> ajoute 24 px entre les cartes, horizontalement et verticalement.</li>
+</ul>
 <h3>Responsive avec Grid</h3>
 <pre><code class="lang-css">.services {
   display: grid;
@@ -349,6 +415,14 @@ h3 {
 <li>crée autant de colonnes que possible,</li>
 <li>chaque colonne fait minimum 260 px,</li>
 <li>sinon elle prend une fraction de l’espace.</li>
+</ul>
+<h3>Explication détaillée de <code>auto-fit</code> et <code>minmax()</code></h3>
+<ul class="checklist">
+<li><code>auto-fit</code> demande au navigateur de créer automatiquement le nombre de colonnes qui rentrent.</li>
+<li><code>minmax(260px, 1fr)</code> dit qu’une colonne doit faire au minimum 260 px.</li>
+<li>Si plusieurs colonnes de 260 px rentrent, le navigateur les affiche côte à côte.</li>
+<li>S’il n’y a pas assez de place, une carte passe à la ligne au lieu de déborder.</li>
+<li><code>1fr</code> autorise les colonnes à s’élargir pour remplir l’espace restant.</li>
 </ul>
 <h3>Exemple concret</h3>
 <p>HTML :</p>
@@ -430,9 +504,28 @@ h3 {
     font-size: 64px;
   }
 }</code></pre>
+<h3>Comprendre chaque ligne</h3>
+<ul class="checklist">
+<li><code>.hero</code> cible la section principale de la page.</li>
+<li><code>display: grid</code> transforme la section en grille. Même avec une seule colonne, Grid prépare une structure propre.</li>
+<li><code>gap: 32px</code> ajoute 32 px d’espace entre les enfants de <code>.hero</code>, par exemple entre le texte et l’image.</li>
+<li><code>padding: 64px 24px</code> ajoute 64 px en haut et en bas, puis 24 px à gauche et à droite. C’est confortable sur mobile.</li>
+<li><code>.hero-title</code> cible uniquement le titre de la section hero.</li>
+<li><code>font-size: 40px</code> donne une taille de titre lisible sur téléphone.</li>
+<li><code>@media (min-width: 768px)</code> ouvre un breakpoint : les règles à l’intérieur s’appliquent seulement si l’écran fait au moins 768 px de large.</li>
+<li><code>grid-template-columns: 1fr 1fr</code> crée deux colonnes égales : une pour le texte, une pour l’image ou le visuel.</li>
+<li><code>align-items: center</code> aligne verticalement les deux colonnes au centre.</li>
+<li><code>padding: 96px 48px</code> augmente les espaces sur tablette et ordinateur, car il y a plus de place.</li>
+<li><code>font-size: 64px</code> agrandit le titre sur les grands écrans pour garder un impact visuel fort.</li>
+</ul>
 <h3>Pourquoi mobile first ?</h3>
 <p>Aujourd’hui, beaucoup de visiteurs arrivent par téléphone. Donc on crée d’abord une version mobile propre, puis on adapte pour ordinateur.</p>
 <h3>Breakpoints utiles</h3>
+<p>
+Un breakpoint n’est pas une règle magique liée à un appareil précis. C’est simplement
+un point où ton design commence à manquer de place ou, au contraire, peut utiliser
+plus d’espace. Les valeurs ci-dessous sont des repères courants, pas des obligations.
+</p>
 <pre><code class="lang-css">/* Tablette */
 @media (min-width: 768px) {
 }
@@ -444,11 +537,50 @@ h3 {
 /* Grand écran */
 @media (min-width: 1280px) {
 }</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Breakpoint</th><th>Ce qu’on change souvent</th><th>Exemple concret</th></tr></thead>
+<tbody>
+<tr><td><code>min-width: 640px</code></td><td>Petites tablettes</td><td>Passer une liste de cartes de 1 à 2 colonnes</td></tr>
+<tr><td><code>min-width: 768px</code></td><td>Tablettes</td><td>Mettre un hero en 2 colonnes</td></tr>
+<tr><td><code>min-width: 1024px</code></td><td>Ordinateurs</td><td>Afficher une sidebar, agrandir les marges</td></tr>
+<tr><td><code>min-width: 1280px</code></td><td>Grands écrans</td><td>Limiter le contenu avec <code>max-width</code> pour éviter les lignes trop longues</td></tr>
+</tbody>
+</table></div>
+<h3><code>min-width</code> ou <code>max-width</code> ?</h3>
+<p>
+Avec <code>min-width</code>, tu écris d’abord le style mobile, puis tu ajoutes les
+améliorations pour les écrans plus larges. C’est le plus simple pour apprendre et
+maintenir un site moderne.
+</p>
+<pre><code class="lang-css">/* Style mobile par défaut */
+.menu {
+  display: grid;
+  gap: 12px;
+}
+
+/* Style tablette et desktop */
+@media (min-width: 768px) {
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+}</code></pre>
+<p>
+Avec <code>max-width</code>, tu écris plutôt le style desktop d’abord, puis tu corriges
+pour les petits écrans. Cette méthode existe, mais elle devient vite plus difficile
+quand le site grandit.
+</p>
 <h3>Images responsives</h3>
 <pre><code class="lang-css">img {
   max-width: 100%;
   height: auto;
 }</code></pre>
+<h3>Explication ligne par ligne</h3>
+<ul class="checklist">
+<li><code>img</code> cible toutes les images de la page.</li>
+<li><code>max-width: 100%</code> empêche une image de dépasser la largeur de son parent.</li>
+<li><code>height: auto</code> garde les proportions de l’image pour éviter qu’elle soit écrasée.</li>
+</ul>
 <h3>Texte responsive avec clamp</h3>
 <pre><code class="lang-css">.hero-title {
   font-size: clamp(2.5rem, 6vw, 5rem);
@@ -460,6 +592,41 @@ h3 {
 <li>maximum : 5rem.</li>
 </ul>
 <p>Très utile pour les titres modernes.</p>
+<p>
+Lecture complète : le titre ne descend jamais sous <code>2.5rem</code>, essaie de
+suivre <code>6vw</code> selon la largeur de l’écran, puis s’arrête à <code>5rem</code>
+pour ne pas devenir trop grand.
+</p>
+<h3>Exemple concret : passer de 1 à 2 colonnes</h3>
+<p>Sur mobile, on empile le texte et l’image. Sur tablette et ordinateur, on les met côte à côte.</p>
+<pre><code class="lang-css">.about {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .about {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}</code></pre>
+<h3>Explication ligne par ligne</h3>
+<ul class="checklist">
+<li><code>.about</code> cible la section “à propos”.</li>
+<li><code>display: grid</code> permet d’organiser ses éléments en grille.</li>
+<li><code>gap: 24px</code> garde un espace propre entre le texte et l’image.</li>
+<li>Sans breakpoint, la grille reste naturellement sur une colonne si aucune colonne n’est déclarée.</li>
+<li><code>@media (min-width: 768px)</code> applique le changement à partir de la tablette.</li>
+<li><code>grid-template-columns: 1fr 1fr</code> place le contenu en deux colonnes égales.</li>
+<li><code>align-items: center</code> centre verticalement les éléments dans la section.</li>
+</ul>
+<h3>Erreurs fréquentes à éviter</h3>
+<ul class="checklist">
+<li>Mettre <code>width: 1200px</code> sur un bloc principal.</li>
+<li>Oublier <code>max-width: 100%</code> sur les images.</li>
+<li>Faire des media queries avant d’avoir une version mobile correcte.</li>
+<li>Utiliser une taille de texte trop petite sur téléphone.</li>
+</ul>
                 </article>
                 <article class="lesson" id="ch17">
                     <h2>17. Variables CSS</h2>
@@ -748,6 +915,26 @@ h3 {
   max-width: 65ch;
 }</code></pre>
 <p><code>ch</code> correspond approximativement à la largeur d’un caractère. Un paragraphe entre 55 et 75 caractères de largeur est souvent plus lisible.</p>
+<h3>Problème 6 : mon style ne s’applique pas</h3>
+<h4>Checklist de debug</h4>
+<ul class="checklist">
+<li>Vérifie que le fichier CSS est bien lié avec <code>&lt;link&gt;</code>.</li>
+<li>Vérifie que le nom de classe est identique dans le HTML et le CSS.</li>
+<li>Regarde si une règle plus spécifique écrase ton style.</li>
+<li>Inspecte l’élément dans le navigateur pour voir quelle règle gagne.</li>
+</ul>
+<h4>Exemple courant</h4>
+<pre><code class="lang-html">&lt;button class=&quot;button-primary&quot;&gt;Envoyer&lt;/button&gt;</code></pre>
+<pre><code class="lang-css">.btn-primary {
+  background: #2563eb;
+}</code></pre>
+<p>Ici, le CSS ne marche pas car le HTML utilise <code>button-primary</code> alors que le CSS cible <code>btn-primary</code>.</p>
+<h3>Problème 7 : mes espacements sont incohérents</h3>
+<p>Choisis une échelle simple et réutilise-la partout : 4, 8, 12, 16, 24, 32, 48, 64 px.</p>
+<pre><code class="lang-css">.section { padding-block: 64px; }
+.card { padding: 24px; }
+.stack { display: grid; gap: 16px; }</code></pre>
+<div class="note">Le CSS devient plus propre quand les décisions se répètent volontairement au lieu d’être improvisées élément par élément.</div>
                 </article>
                 <div class="course-nav">
                     <a href="cours-html-pro.html" class="btn btn-secondary">← HTML pro</a>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours CSS — Les bases</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">LearnCode</a>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="html.html">HTML</a></li>
+                <li><a href="css.html" class="active">CSS</a></li>
+                <li><a href="java.html">Java</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="java.html" class="btn btn-primary">Suivant : Java</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="course-hero course-hero-css">
+            <div class="container">
+                <p class="badge">Cours 2 / 3</p>
+                <h1>Les bases de CSS</h1>
+                <p>
+                    CSS (Cascading Style Sheets) donne le style à ta page :
+                    couleurs, tailles, espacements et mise en page.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container course">
+                <article class="lesson">
+                    <h2>1. Qu’est-ce que CSS ?</h2>
+                    <p>
+                        Le CSS s’applique aux éléments HTML. Une règle a un
+                        <strong>sélecteur</strong>, puis des <strong>propriétés</strong>.
+                    </p>
+                    <pre><code>/* sélecteur { propriété: valeur; } */
+p {
+    color: blue;
+    font-size: 18px;
+}</code></pre>
+                </article>
+
+                <article class="lesson">
+                    <h2>2. Lier le CSS au HTML</h2>
+                    <p>La méthode recommandée : un fichier externe.</p>
+                    <pre><code>&lt;!-- Dans le &lt;head&gt; du HTML --&gt;
+&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+                    <p>Ou en CSS interne :</p>
+                    <pre><code>&lt;style&gt;
+    h1 { color: red; }
+&lt;/style&gt;</code></pre>
+                </article>
+
+                <article class="lesson">
+                    <h2>3. Sélecteurs essentiels</h2>
+                    <pre><code>/* Balise */
+h1 { color: black; }
+
+/* Classe (réutilisable) */
+.titre { font-size: 24px; }
+
+/* ID (unique) */
+#logo { width: 100px; }
+
+/* Combinaison */
+.card p { color: #666; }</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Classes en action</h3>
+                        <p class="css-demo-muted">Texte grisé avec une classe</p>
+                        <p class="css-demo-accent">Texte en couleur primaire</p>
+                    </div>
+                </article>
+
+                <article class="lesson">
+                    <h2>4. Couleurs et textes</h2>
+                    <pre><code>body {
+    color: #1a1a1a;          /* texte */
+    background-color: #fff;  /* fond */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.titre {
+    font-weight: bold;
+    text-align: center;
+}</code></pre>
+                </article>
+
+                <article class="lesson">
+                    <h2>5. Box model (le modèle de boîte)</h2>
+                    <p>Chaque élément est une boîte avec contenu, padding, bordure et marge.</p>
+                    <pre><code>.boite {
+    width: 300px;
+    padding: 20px;        /* intérieur */
+    border: 2px solid #2563eb;
+    margin: 16px;         /* extérieur */
+    border-radius: 8px;
+    box-sizing: border-box;
+}</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Exemple de boîte</h3>
+                        <div class="box-demo">Je suis une boîte CSS</div>
+                    </div>
+                </article>
+
+                <article class="lesson">
+                    <h2>6. Flexbox (mise en page)</h2>
+                    <p>Flexbox aligne facilement des éléments en ligne ou en colonne.</p>
+                    <pre><code>.row {
+    display: flex;
+    justify-content: space-between; /* horizontal */
+    align-items: center;            /* vertical */
+    gap: 16px;
+}</code></pre>
+                    <div class="demo">
+                        <h3 class="demo-title">Flex en direct</h3>
+                        <div class="flex-demo">
+                            <span>A</span>
+                            <span>B</span>
+                            <span>C</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lesson">
+                    <h2>7. Propriétés à retenir</h2>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Propriété</th>
+                                    <th>Rôle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>color</code></td><td>Couleur du texte</td></tr>
+                                <tr><td><code>background</code></td><td>Fond</td></tr>
+                                <tr><td><code>margin</code> / <code>padding</code></td><td>Espacements</td></tr>
+                                <tr><td><code>display: flex</code></td><td>Mise en page flexible</td></tr>
+                                <tr><td><code>width</code> / <code>height</code></td><td>Taille</td></tr>
+                                <tr><td><code>border-radius</code></td><td>Coins arrondis</td></tr>
+                                <tr><td><code>@media</code></td><td>Responsive (mobile)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <div class="course-nav">
+                    <a href="html.html" class="btn btn-secondary">← Cours HTML</a>
+                    <a href="java.html" class="btn btn-primary">Cours Java →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 LearnCode — Cours CSS</p>
+        <nav class="footer-links">
+            <a href="html.html">HTML</a>
+            <a href="css.html">CSS</a>
+            <a href="java.html">Java</a>
+        </nav>
+    </footer>
+</body>
+</html>

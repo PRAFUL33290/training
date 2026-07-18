@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours Java — Les bases</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">LearnCode</a>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="html.html">HTML</a></li>
+                <li><a href="css.html">CSS</a></li>
+                <li><a href="java.html" class="active">Java</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="index.html" class="btn btn-primary">Accueil</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="course-hero course-hero-java">
+            <div class="container">
+                <p class="badge">Cours 3 / 3</p>
+                <h1>Les bases de Java</h1>
+                <p>
+                    Java est un langage de programmation orienté objet.
+                    Il sert pour les apps, le backend, Android et bien plus.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container course">
+                <article class="lesson">
+                    <h2>1. Qu’est-ce que Java ?</h2>
+                    <p>
+                        Contrairement à HTML et CSS, Java est un vrai
+                        <strong>langage de programmation</strong> : tu écris des
+                        instructions exécutées par la machine virtuelle Java (JVM).
+                    </p>
+                    <ul class="checklist">
+                        <li>Fichier source : <code>MonProgramme.java</code></li>
+                        <li>Compilation : <code>javac MonProgramme.java</code></li>
+                        <li>Exécution : <code>java MonProgramme</code></li>
+                    </ul>
+                </article>
+
+                <article class="lesson">
+                    <h2>2. Premier programme</h2>
+                    <pre><code>public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Bonjour Java !");
+    }
+}</code></pre>
+                    <ul class="checklist">
+                        <li>Le nom de la classe doit correspondre au nom du fichier</li>
+                        <li><code>main</code> est le point d’entrée du programme</li>
+                        <li><code>System.out.println</code> affiche du texte</li>
+                    </ul>
+                </article>
+
+                <article class="lesson">
+                    <h2>3. Variables et types</h2>
+                    <pre><code>int age = 20;              // nombre entier
+double prix = 19.99;       // nombre à virgule
+boolean estActif = true;   // vrai / faux
+char lettre = 'A';          // un caractère
+String nom = "Alice";      // texte (objet)</code></pre>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Exemple</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>int</code></td><td>42</td></tr>
+                                <tr><td><code>double</code></td><td>3.14</td></tr>
+                                <tr><td><code>boolean</code></td><td>true / false</td></tr>
+                                <tr><td><code>char</code></td><td>'Z'</td></tr>
+                                <tr><td><code>String</code></td><td>"Hello"</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="lesson">
+                    <h2>4. Conditions (if / else)</h2>
+                    <pre><code>int note = 15;
+
+if (note >= 10) {
+    System.out.println("Réussi");
+} else {
+    System.out.println("À retravailler");
+}</code></pre>
+                </article>
+
+                <article class="lesson">
+                    <h2>5. Boucles</h2>
+                    <pre><code>// Boucle for : répéter un nombre de fois
+for (int i = 1; i <= 5; i++) {
+    System.out.println("Tour n°" + i);
+}
+
+// Boucle while : tant que la condition est vraie
+int n = 0;
+while (n < 3) {
+    System.out.println(n);
+    n++;
+}</code></pre>
+                </article>
+
+                <article class="lesson">
+                    <h2>6. Tableaux</h2>
+                    <pre><code>String[] langages = {"HTML", "CSS", "Java"};
+
+System.out.println(langages[0]); // HTML
+System.out.println(langages.length); // 3
+
+for (String lang : langages) {
+    System.out.println(lang);
+}</code></pre>
+                </article>
+
+                <article class="lesson">
+                    <h2>7. Méthodes (fonctions)</h2>
+                    <pre><code>public class Calcul {
+    public static int addition(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        int resultat = addition(5, 3);
+        System.out.println(resultat); // 8
+    }
+}</code></pre>
+                </article>
+
+                <article class="lesson">
+                    <h2>8. Classe et objet (intro)</h2>
+                    <pre><code>public class Chien {
+    String nom;
+
+    void aboyer() {
+        System.out.println(nom + " dit wouf !");
+    }
+
+    public static void main(String[] args) {
+        Chien monChien = new Chien();
+        monChien.nom = "Rex";
+        monChien.aboyer(); // Rex dit wouf !
+    }
+}</code></pre>
+                    <p>
+                        Une <strong>classe</strong> est un modèle. Un <strong>objet</strong>
+                        est une instance de cette classe.
+                    </p>
+                </article>
+
+                <article class="lesson">
+                    <h2>9. Notions à retenir</h2>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Notion</th>
+                                    <th>Rôle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>class</code></td><td>Définir une classe</td></tr>
+                                <tr><td><code>main</code></td><td>Point de départ</td></tr>
+                                <tr><td><code>int</code>, <code>String</code>…</td><td>Types de données</td></tr>
+                                <tr><td><code>if</code> / <code>else</code></td><td>Conditions</td></tr>
+                                <tr><td><code>for</code> / <code>while</code></td><td>Boucles</td></tr>
+                                <tr><td><code>new</code></td><td>Créer un objet</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="note">
+                        <strong>Note :</strong> Java ≠ JavaScript. Java est un langage compilé
+                        (apps, serveurs). JavaScript s’exécute surtout dans le navigateur.
+                    </p>
+                </article>
+
+                <div class="course-nav">
+                    <a href="css.html" class="btn btn-secondary">← Cours CSS</a>
+                    <a href="index.html" class="btn btn-primary">Retour accueil</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 LearnCode — Cours Java</p>
+        <nav class="footer-links">
+            <a href="html.html">HTML</a>
+            <a href="css.html">CSS</a>
+            <a href="java.html">Java</a>
+        </nav>
+    </footer>
+</body>
+</html>
